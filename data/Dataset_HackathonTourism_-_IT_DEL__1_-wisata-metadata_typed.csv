@@ -1,0 +1,141 @@
+place-id,place-name,place-type,operational-hour,address,place-rating,status,harga_min,harga_max,latitude,longitude
+1,Pantai Pasir Putih Lumban Bul-bul Balige,Wisata Alam,07.00 - 21.30,"83XF+9VQ, Lumban Bulbul, Kec. Balige, Toba, Sumatera Utara",4.3,beroperasi,5000.0,10000.0,2.3492596002020694,99.07327785959252
+2,Bukit Pahoda,Wisata Alam,05.00 - 17.00,"82XR+J4W, Lumban Silintong, Kec. Balige, Toba, Sumatera Utara 22312",4.6,beroperasi,0.0,0.0,2.34938999309088,99.04028385235128
+3,Desa Wisata Silalahi Pagar Batu,Wisata Alam,09.00 - 17.00,"Jl. Dr. TB. Silalahi, Hinalang Bagasan, Kec. Balige, Toba, Sumatera Utara 22312",5.0,beroperasi,0.0,0.0,2.331011976662224,99.04921861186872
+4,Air Terjun Siboruon Balige,Wisata Alam,08.00 - 17.00,"73QM+VH2, Siboruon, Kec. Balige, Toba, Sumatera Utara 22312",4.7,beroperasi,0.0,0.0,2.289866206064578,99.08388020674704
+5,Puncak Paralayang Sibodiala,Wisata Alam,05.00 - 21.00,"828R+Q2, Silalahi Pagar Batu, Kec. Balige, Toba, Sumatera Utara",4.7,beroperasi,5000.0,10000.0,2.317202199257693,99.04007004070408
+6,Pantai Pelangi,Wisata Alam,07.00 - 21.30,"934X+C47 Pantai pelangi, Lumban Pea, Kec. Balige, Toba, Sumatera Utara",4.6,beroperasi,5000.0,10000.0,2.356344164693513,99.09779924868393
+7,Penatapan Meat Balige,Wisata Alam,24 jam ,"82P4+W4H, Jl. Raya Meat, Meat, Toba, Sumatera Utara 22312",4.6,beroperasi,0.0,0.0,2.3375240759130342,99.00538132536288
+8,Tambunan Sunset Beach,Wisata Alam,24 jam ,"Lumban Gaol, Kec. Balige, Toba, Sumatera Utara",4.4,beroperasi,0.0,0.0,2.355511359884397,99.08449491263856
+9,Wisata Bukit Gibeon,Wisata Alam,24 jam ,"HXRX+84Q, UnSionggang Utara, Kec. Lumban Julu, Toba, Sumatera Utara 21174",4.5,beroperasi,5000.0,10000.0,2.591042448016802,98.99788496402712
+10,Wisata Puncak Pangkodian,Wisata Alam,24 jam ,"82R5+CFX, Jl. Pangkodian, Lintong Nihuta, Kec. Tampahan, Toba, Sumatera Utara 22312",4.4,beroperasi,5000.0,10000.0,2.341326995237832,99.008719138857
+11,Bukit Tara Bunga,Wisata Alam,24 jam ,"82V8+RW6, Lintong Nihuta, Kec. Tampahan, Toba, Sumatera Utara 22312",4.5,beroperasi,5000.0,10000.0,2.3447867741231683,99.01722798118648
+12,Air Terjun Sampuran,Wisata Alam,24 jam ,"74GV+3G3, Huta Namora, Kec. Balige, Toba, Sumatera Utara 22312",4.3,beroperasi,0.0,0.0,2.278675286188601,99.14360208788077
+13,Geosite Sipinsur,Wisata Alam,07.00 - 23.00,"Parulohan, Kec. Paranginan, Kabupaten Humbang Hasundutan, Sumatera Utara 22476",4.6,beroperasi,5000.0,10000.0,2.3293591970762058,98.88132952351594
+14,Wisata Rumah Pohon,Wisata Alam,24 jam,"922G+H4F, Jl. Raya TaraBunga, Tara Bunga, Kec. Tampahan, Toba, Sumatera Utara 22312",4.5,beroperasi,5000.0,10000.0,2.3516819530447366,99.02520953701004
+15,Air Terjun Situmurun,Wisata Alam,08.00 - 17.00,"Jonggi Nihuta, Hatinggian, Kec. Lumban Julu, Toba, Sumatera Utara 22386",4.6,beroperasi,5000.0,10000.0,2.537730210260568,99.00801408303306
+16,Batu Basiha,Wisata Alam,24 jam,"825R+VFP, Silalahi Pagar Batu, Kec. Balige, Toba, Sumatera Utara 22312",4.5,beroperasi,0.0,0.0,2.3516819530447366,99.02520953701004
+17,Air Terjun Sigura-Gura,Wisata Alam,24 jam ,"H833+VRV, Halado, Kec. Pintu Pohan Merant, Toba, Sumatera Utara 21274",4.4,beroperasi,10000.0,20000.0,2.5557703317675244,99.30466568874049
+18,Puncak Huta Ginjang,Wisata Alam,24 jam ,"8X7C+WCJ, Sitanggor, Kec. Muara, Kabupaten Tapanuli Utara, Sumatera Utara 22476",4.7,beroperasi,5000.0,10000.0,2.3150877594981343,98.971055240704
+19,Pantai Parparean 2,Wisata Alam,08.00 - 18.00,"C4MX+F73, Jl. Lintas Sumatera, Patane V, Kec. Porsea, Toba, Sumatera Utara 22384",4.5,beroperasi,5000.0,10000.0,2.4338404807113827,99.14819682536267
+20,Boli Boli Hot Spring,Wisata Alam,24 jam ,"Situmeang Hasundutan, Kec. Sipoholon, Kabupaten Tapanuli Utara, Sumatera Utara 22452",4.2,beroperasi,70000.0,70000.0,2.075401772091245,98.94415589285848
+21,Bukit Senyum,Wisata Alam,24 jam,"JWPC+8C4, Motung, Kec. Ajibata, Toba, Sumatera Utara",4.7,beroperasi,0.0,0.0,2.6360931627435997,98.92099197166834
+22,Bukit Tara Bunga,Wisata Alam,24 jam ,"82V8+RW6, Lintong Nihuta, Kec. Tampahan, Toba, Sumatera Utara 22312",4.5,beroperasi,5000.0,10000.0,2.3447653283281955,99.01720650450751
+23,Panorama Adian Nalambok,Wisata Alam,08.00 - 21.00,"8247+X8, Jl. Lintas Sumatera No.126, Gurgur Aek Raja, Kec. Tampahan, Toba, Sumatera Utara 22312",4.4,beroperasi,0.0,0.0,2.307646460798102,99.01332381186874
+24,Arung Jeram Desa Parhitean,Wisata Alam,09.00 - 17.00,"H86V+CM, Jalan Lintas Sigura - Gura, Parhitean, North Meranti, Pintu Pohan Merant, Toba, North Sumatra 21274",5.0,beroperasi,0.0,0.0,2.5614011254221576,99.34421355767306
+25,Pantai Lumban Silintong,Wisata Alam,24 jam," 83R2+F4, Lumban Silintong, Kec. Balige, Sumatera Utara",5.0,beroperasi,0.0,0.0,2.341517594609889,99.05024732383258
+26,Pantai Pakkodian Tampahan,Wisata Alam,24 jam,"82Q7+R9, Danau Toba, Lintong Nihuta, Kec. Tampahan, Toba, Sumatera Utara 22312 ",4.5,beroperasi,0.0,0.0,2.339909734703453,99.01346289685164
+27,Wisata Alam Fishing-Camp Siarubung,Wisata Alam,24 jam,"HM76+88, Turpuk Limbong, Kec. Harian, Kabupaten Samosir, Sumatera Utara",4.9,beroperasi,10000.0,50000.0,2.5636442248775824,98.66078169814436
+28,Air Terjun Binanga Bolon,Wisata Alam,24 jam,"RPWH+FG , Pua Dolok, Kec. Pua, Kabupaten Simalungun, Sumatera Utara 21165 ",4.6,beroperasi,0.0,0.0,2.846344777940582,98.72883816801654
+29,Air Terjun Sigarattung,Wisata Alam,24 jam,"JV67+2MF, Tomok, Simanindo, Kabupaten Samosir, Sumatera Utara 22395",4.5,beroperasi,5000.0,10000.0,2.6103417399774997,98.86415213917928
+30,Batu Marhosa,Wisata Alam,24 jam,"JV39+M62, Jl. Pulau Samosir, Tomok, Simanindo, Kabupaten Samosir, Sumatera Utara 22395",4.2,beroperasi,0.0,0.0,2.604397043875533,98.86803312883649
+31,Danau Sidihoni,Wisata Alam,24 jam,"Salaon Toba, Kec. Ronggur Nihuta, Kabupaten Samosir, Sumatera Utara",4.4,beroperasi,0.0,0.0,2.603283367624243,98.74502128405312
+32,Bukit Sidihoni,Wisata Alam,24 jam,"JP4X+3HP, Sidihoni atas, Salaon Toba, Kec. Ronggur Nihuta, Kabupaten Samosir, Sumatera Utara 22392",4.6,beroperasi,5000.0,10000.0,2.6095052754175807,98.74926526447643
+33,Cottage Aek Tawar Sari,Wisata Alam,24 jam,"HQQJ+8H Ronggur Nihuta, Kabupaten Samosir, Sumatera Utara",4.8,beroperasi,0.0,0.0,2.5884552399094702,98.78133438465387
+34,Panorama Lembah Bakara,Wisata Alam,24 jam,"8VR5+VP, Huta Lontung, Kec. Muara, Kabupaten Tapanuli Utara, Sumatera Utara",5.0,beroperasi,0.0,0.0,2.3424092944384154,98.85931056801525
+35,Bukit Simargulang Ombun,Wisata Alam,24 jam,"GP4Q+GG6, Tamba Dolok, Kec. Sitio-Tio, Kabupaten Samosir, Sumatera Utara",4.4,beroperasi,5000.0,10000.0,2.5064715317725974,98.73868626615996
+36,Bukit Sipatungan,Wisata Alam,24 jam,"CQGV+X8C, Sabulan, Kec. Sitio-Tio, Kabupaten Samosir, Sumatera Utara",4.5,beroperasi,0.0,0.0,2.4275610304959483,98.79325043567832
+37,Air Terjun Sitapigagan,Wisata Alam,09.00 - 17.00,"JJQ5+QR, Bonan Dolok, Kec. Sianjur Mula Mula, Kabupaten Samosir, Sumatera Utara 22396",4.5,beroperasi,0.0,0.0,2.6396408813041736,98.60949392383328
+38,Singgolom,Wisata Alam,24 jam,"Jl. Singgolom Raya, Lintong Nihuta, Kec. Tampahan, Toba, Sumatera Utara 22312 82V9+43 ",4.8,beroperasi,0.0,0.0,2.343100376801013,99.0176385
+39,Puncak Panorama Aek Nauli,Wisata Alam,24 jam,"PW5J+F55, Sibaganding, Kec. Girsang Sipangan Bolon, Kabupaten Simalungun, Sumatera Utara 21174",4.6,beroperasi,0.0,0.0,2.708924735313688,98.93050015452565
+40,Pusat Informasi Toba Caldera UNESCO Global Geopark,Wisata Alam,09.00 - 17.00,"HJVM+CCF, Sigulatti, Sarimarrihit, Kec. Sianjur Mula Mula, Kabupaten Samosir, Sumatera Utara 22396",4.6,beroperasi,10000.0,10000.0,2.5937630364402877,98.63350395266976
+41,Caldera toba nomadic escape (glamour camping),Wisata Alam,07.00 - 18.00,"JW5W+4CX, Pardamean Sibisa, Kec. Ajibata, Toba, Sumatera Utara 22386",4.5,beroperasi,5000.0,40000.0,2.6080342986728144,98.9460354238332
+42,Bukit Holbung,Wisata Alam,24 jam ,"Hariara Pohan, Kec. Harian, Kabupaten Samosir, Sumatera Utara GMJX+45",4.7,beroperasi,5000.0,15000.0,2.5305337914347272,98.69783122383308
+43,Batu lihi star,Wisata Alam,10.00 - 19.15,"QRHC+G25, Jl. Pematang Pua - Parapat, Pematang Tambun Raya, Kec. Pematang Sidamanik, Kabupaten Simalungun, Sumatera Utara 21186",4.3,beroperasi,5000.0,10000.0,2.7790376217041697,98.8200177116348
+44,Batu Maroppa,Wisata Alam,24 jam,"FPJ8+C6P, Tamba Dolok, Kec. Sitio-Tio, Kabupaten Samosir, Sumatera Utara 22391",4.5,beroperasi,0.0,0.0,2.481285535491637,98.71560298336162
+45,Togaraja,Wisata Alam,24 jam,"GMJ3+24, Partungko Naginjang, Kec. Harian, Kabupaten Samosir, Sumatera Utara 22391",4.7,beroperasi,5000.0,15000.0,2.527979612533262,98.6521317680156
+46,Pantai Pulo Tao,Wisata Alam,09.00 - 17.30,"Sitalolo No.Desa, Cinta Dame, Simanindo, Samosir Regency, North Sumatra 22395 QP4M+PR",4.5,beroperasi,0.0,0.0,2.757012591263358,98.73455648336235
+47,Desa Wisata Sigapiton,Wisata Alam,07.00 - 18.00,"JW2H+4QP, Unnamed Road, Motung, Ajibata, Toba, North Sumatra 22386",4.6,beroperasi,0.0,0.0,2.60058812427431,98.92950331219843
+48,Menara Pandang Simanindo,Wisata Alam,24 jam,"PQX2+656, Simanindo Sangkal, Simanindo, Kabupaten Samosir, Sumatera Utara",4.5,beroperasi,5000.0,7000.0,2.7483294426395792,98.75034042383368
+49,Bukit Burung,Wisata Alam,24 jam,"JMJ3+MXF, Siboro, Kec. Sianjur Mula Mula, Kabupaten Samosir, Sumatera Utara",4.8,beroperasi,0.0,0.0,2.632008605398129,98.65494368336203
+50,Air Terjun Tombak Pangaribuan,Wisata Alam,24 jam,"GRJ8+JPW, Palipi, Kec. Palipi, Kabupaten Samosir, Sumatera Utara 22393",4.0,beroperasi,0.0,0.0,2.531858219807868,98.81674159499656
+51,Pantai Silalahi,Wisata Alam,08.00 - 20.00,"QGVH+V4Q, Silalahi III, Kec. Silahsabungan, Kabupaten Dairi, Sumatera Utara",4.4,beroperasi,0.0,0.0,2.79491108652294,98.52778616616072
+52,Aek Rangat Pangururan,Wisata Alam,24 jam,"JM9G+F6 Aek Rangat, Kec. Pangururan, Kabupaten Samosir, Sumatera Utara 22392",4.3,beroperasi,10000.0,15000.0,2.618962358400672,98.67544479814435
+53,PENATAPAN PARHALLOW SIGARANTUNG,Wisata Alam,08.00 - 23.00,"JV8C+WWW, Tomok, Simanindo, Kabupaten Samosir, Sumatera Utara 22395",4.6,beroperasi,0.0,0.0,2.6175988678473545,98.87228558150626
+54,Batu Gantung,Wisata Alam,09.30 - 17.30,"MWQF+9P3 Lake Toba, Kabupaten Simalungun, Sumatera Utara 21174",4.5,beroperasi,15000.0,20000.0,2.688671239976716,98.92425658150654
+55,Gunung Pusuk Buhit,Wisata Alam,24 jam,"JM22+6J8, Ginolat, Kec. Sianjur Mula Mula, Kabupaten Samosir, Sumatera Utara 22396",4.7,beroperasi,0.0,0.0,2.6008269597984164,98.6515456391792
+56,Bukit Sipolha,Wisata Alam,24 jam,"PVM5+XP3 Bukit Sipolha, Sipolha Horison, Pematang Sidamanik, Simalungun Regency, North Sumatra 21186",4.6,beroperasi,5000.0,10000.0,2.7351674458357733,98.85938732754488
+57,Air Terjun Janji,Wisata Alam,24 jam,"8RQ8+Q8 Tipang, Kec. Bakti Raja, Kabupaten Humbang Hasundutan, Sumatera Utara 22457",4.6,beroperasi,,,2.339668555177338,98.81571392383265
+58,Gua Liang Sipege,Wisata Budaya / Sejarah,24 jam ,"8452+FP3, Hutagaol Peatalun, Kec. Balige, Toba, Sumatera Utara 22312",4.8,beroperasi,0.0,0.0,2.308890280711529,99.10179902568808
+59,Monumen Raja SONAKMALELA,Wisata Budaya / Sejarah, 24 jam,"83M8+MMM, Napitupulu Bagasan, Kec. Balige, Toba, Sumatera Utara",4.4,beroperasi,0.0,0.0,2.334519775687315,99.06660872383264
+60,Makam Sisingamangaraja XII,Wisata Budaya / Sejarah,24 jam ,"82JX+8Q3, Silalahi Pagar Batu, Kec. Balige, Toba, Sumatera Utara 22312",4.5,beroperasi,0.0,0.0,2.331051116577472,99.0494410256882
+61,Desa Adat Ragi Hotang,Wisata Budaya / Sejarah,24 jam,"8293+6WP, Meat, Kec. Tampahan, Toba, Sumatera Utara 22312",4.5,beroperasi,0.0,0.0,2.318298678713521,99.00482579685168
+62,Monumen Perang Dunia II,Wisata Budaya / Sejarah,24 jam,"C5V4+8FW, Jl. Porsea, Ps. Porsea, Kec. Porsea, Toba, Sumatera Utara 22384",4.2,beroperasi,0.0,0.0,2.44362767701753,99.15616068465393
+63,Monumen D.I. Panjaitan ,Wisata Budaya / Sejarah,24 jam,"83M7+RJ4, Napitupulu Bagasan, Kec. Balige, Toba, Sumatera Utara",4.8,tutup,0.0,0.0,2.3349104174722743,99.06404724271351
+64,Mual Sipangolu (Mual Sisingamangaraja),Wisata Budaya / Sejarah,24 jam,"8RFW+HF7, Jl. Muara Aek Sipangolu, Simangulampe, Kec. Bakti Raja, Kabupaten Humbang Hasundutan, Sumatera Utara 22457",4.9,beroperasi,0.0,0.0,2.32104052108718,99.07007489814436
+65,Mual Sirambe,Wisata Budaya / Sejarah,24 jam,"84WF+FRV, Sitangkola, Kec. Laguboti, Toba, Sumatera Utara 22381",4.6,beroperasi,0.0,0.0,2.2964703223035907,99.11723296801506
+66,Desa Wisata Tomok Parsaoran,Wisata Budaya / Sejarah,24 jam,"Jl. Makam Sidabutar Jalan, Tomok, Simanindo, Kabupaten Samosir, Sumatera Utara 22395 MV26+PC",4.3,beroperasi,10000.0,30000.0,2.6520233615901345,98.86097999499678
+67,Kampung Ulos Hutaraja,Wisata Budaya / Sejarah,08.00 - 17.00,"Kampung ulos, Huta Bolon, Kec. Pangururan, Kabupaten Samosir, Sulawesi Utara 22392 MM7Q+HJ",4.6,beroperasi,0.0,0.0,2.66421841107743,98.68906971219852
+68,Patung Sigalegale,Wisata Budaya / Sejarah,08.00 - 19.00,"MV26+P8P, Tomok, Simanindo, Kabupaten Samosir, Sumatera Utara 22395",4.6,beroperasi,5000.0,10000.0,2.6521028136146314,98.86083039685248
+69,Istana Raja Sisingamangaraja,Wisata Budaya / Sejarah,24 jam,"8R47+82P, Simamora, Kec. Bakti Raja, Kabupaten Humbang Hasundutan, Sumatera Utara 22457",4.6,beroperasi,5000.0,10000.0,2.306005820043636,98.81262538336117
+70,Batu Kursi Raja Siallagan ( Stone Chair of King Siallagan ),Wisata Budaya / Sejarah,08.00 - 18.00,"Siallagan Pindaraya, Jl. Lkr. Tuktuk, Simanindo, Kabupaten Samosir, Sumatera Utara 22395 MRHP+JC",4.5,beroperasi,10000.0,25000.0,2.6792311052576823,98.83603599685262
+71,Sopo Guru Tatea Bulan | ᯘᯬᯇᯬ ᯎᯮᯒᯮ ᯖᯖᯩᯀ ᯅᯮᯞᯉ᯲,Wisata Budaya / Sejarah,24 jam,"HJRJ+Q7R, Sarimarrihit, Kec. Sianjur Mula Mula, Kabupaten Samosir, Sumatera Utara 22396",4.7,beroperasi,5000.0,10000.0,2.592258443837591,98.6306572545253
+72,Rumah Pesanggrahan Bung Karno,Wisata Budaya / Sejarah,09.00 - 17.00,"Pantai mercusuar, Parapat, Kec. Girsang Sipangan Bolon, Kabupaten Simalungun, Sumatera Utara 21174 MW8G+5H",4.6,beroperasi,0.0,0.0,2.6657868624314376,98.92642772568898
+73,Museum Huta Bolon Simanindo,Wisata Budaya / Sejarah,08.00 - 17.00,"QP2V+VJX, Jalan Pelabuhan, Simanindo Sangkal, Simanindo, Samosir Regency, North Sumatra 22395",4.2,beroperasi,10000.0,20000.0,2.752495075783331,98.74411332568928
+74,Tugu Toga Aritonang,Wisata Budaya / Sejarah,24 jam,"8WQR+RQ Desa, Dolok Martumbur, Kec. Muara, Kabupaten Tapanuli Utara, Sumatera Utara 22476",4.5,beroperasi,0.0,0.0,2.3397556153756844,98.94192711219786
+75,Pemandian Aek Sipitu Dai,Wisata Budaya / Sejarah,06.00 - 23.00,"HJHX+F2X, Aek Sipitudai, Kec. Sianjur Mula Mula, Kabupaten Samosir, Sumatera Utara 22396",4.3,beroperasi,10000.0,10000.0,2.57899804665118,98.64760079685227
+76,Labersa Toba Fantasi Waterpark,Wisata Buatan,09.00 - 18.00,"Jl. Saribu Raja, Saribu Raja Janji Maria, Kec. Balige, Toba, Sumatera Utara",3.7,beroperasi,40000.0,50000.0,2.338981695097184,99.08218332568822
+77,TB Silalahi Swimming Pool,Wisata Buatan,09.00 - 18.00,"82MW+RWJ, Silalahi Pagar Batu, Kec. Balige, Toba, Sumatera Utara 22312",4.0,beroperasi,15000.0,20000.0,2.3348257560327355,99.0472134815056
+78,Taman Eden 100,Wisata Rohani,08.00 - 18.00,"Ps. Lumban Julu, Kec. Lumban Julu, Toba, Sumatera Utara 22386",4.5,beroperasi,7500.0,15000.0,2.591312236837156,99.03881569499666
+79,Bukit Doa,Wisata Rohani,24 jam ,"8X7J+W4F, Huta Ginjang, Kec. Muara, Kabupaten Tapanuli Utara, Sumatera Utara 22476",4.5,beroperasi,0.0,0.0,2.315048939426742,98.9802962680152
+80,Makam DR. I.L. Nommensen,Wisata Rohani,24 jam,"95W4+39V, Sigumpar Dangsina, Kec. Sigumpar, Toba, Sumatera Utara 22384",4.5,beroperasi,0.0,0.0,2.395502884111956,99.15591323917884
+81,Gereja Tua HKBP SIgumpar,Wisata Rohani,24 jam,"Jln.Pdt.DR.IL.NOMMENSEN no.1 Sigumpar, Sigumpar Dangsina, Kec. Sigumpar, Toba, Sumatera Utara 22384  95V4+WX",4.7,beroperasi,0.0,0.0,2.395120284187212,99.15735095266926
+82,Gereja Tua HKBP Balige,Wisata Rohani,10.00 - 16.00,"83J8+8XW, Jl. Gereja, Balige III, Kec. Balige, Toba, Sumatera Utara 22314",4.7,beroperasi,0.0,0.0,2.3311701766360384,99.06720829128471
+83,Taman Wisata Iman Dairi,Wisata Rohani,08.00 - 19.00,"Jalan Sidikalang - Medan No.5, Sitinjo, Kec. Sitinjo, Kabupaten Dairi, Sumatera Utara 22281 P9JM+Q5",4.3,beroperasi,5000.0,20000.0,2.732195113419201,98.38288303917976
+84,Salib Kasih Tarutung,Wisata Rohani,08.00 - 18.00,"2292+3HV, Dolok Siatas Barita, Sosunggulon, Kec. Tarutung, Kabupaten Tapanuli Utara, Sumatera Utara 22416",4.6,beroperasi,5000.0,20000.0,2.01794771944091,99.00141566801445
+85,"Patung Yesus, Bukit Sibeabea",Wisata Rohani,24 jam,"HM2C+7X Turpuk Sihotang, Kec. Harian, Kabupaten Samosir, Sumatera Utara 22396",4.7,beroperasi,30000.0,100000.0,2.550984970753829,98.67231159499654
+86,Taman Wisata Goa Bunda Maria,Wisata Rohani,08.00 - 18.00,"FRR5+X58, Gorat Pallombuan, Kec. Palipi, Kabupaten Samosir, Sumatera Utara 22393",4.8,beroperasi,0.0,0.0,2.4926497898762787,98.80789329499646
+87,"Balerong - Balige, Toba Samosir, North Sumatra, Indonesia",Balai Masyarakat,24 jam ,"Jl. Lintas Sumatera No.88, Napitupulu Bagasan, Kec. Balige, Toba, Sumatera Utara 22312",4.3,beroperasi,0.0,0.0,2.33461493613754,99.06579032568816
+88,Museum Batak T.B. Silalahi Center,Museum ,08.30 - 16.30,"Jl. Dr. TB. Silalahi No.88, Silalahi Pagar Batu, Kec. Balige, Toba, Sumatera Utara 20553",4.6,beroperasi,10000.0,20000.0,2.3333867366371246,99.04840606801524
+89,"Batak Museum
+",Museum ,08.00 - 20.00,"MV26+725, Tomok, Simanindo, Kabupaten Samosir, Sumatera Utara 22395",4.3,beroperasi,0.0,0.0,2.6508562618035936,98.86005155266994
+90,Pasar Tomok,Wisata Bisnis,07.35 - 19.00,"MV27+R3C, Tomok, Simanindo, Kabupaten Samosir, Sumatera Utara 22395",4.4,beroperasi,5000.0,10000.0,2.652310496226617,98.86267708336206
+91,Air Terjun Lae,Wisata Alam,08.00 - 19.00,"Jl. Runding, Sidiangkat, Kec. Sidikalang, Kabupaten Dairi, Sumatera Utara 22216",4.2,beroperasi,0.0,0.0,2.6119379443651214,98.34885390213006
+92,Panatapan Puncak Sidiangkat,Wisata Alam,24 jam,"Sitinjo I, Kec. Sitinjo, Kabupaten Dairi, Sumatera Utara 22281",4.0,beroperasi,0.0,0.0,2.6991313206258614,98.30348574781604
+93,Sicike cike,Wisata Alam,09.00 - 17.00,"Sitinjo, Dairi Regency, North Sumatra 22219",4.2,beroperasi,0.0,0.0,2.6540120578481825,98.37990464822434
+94,Batu Sigadap,Wisata Budaya / Sejarah,24 jam,"Silalahi I, Kec. Silahsabungan, Kabupaten Dairi, Sumatera Utara",4.7,beroperasi,10000.0,20000.0,2.8015124776057707,98.527554534324
+95,Rumah Adat Pak Pak,Wisata Budaya / Sejarah,09.00 - 17.00,"Jl. Parongil Sepung Pelding, Bulu Duri, Kec. Lae Parira, Kabupaten Dairi, Sumatera Utara 22213",4.7,beroperasi,0.0,0.0,2.797289330604585,98.20215306315971
+96,Jembatan Lae Pendaroh,Wisata Buatan,24 jam,"Sidikalang-Seribudolok, Sitinjo I, Kec. Sitinjo, Kabupaten Dairi, Sumatera Utara 22281",4.1,beroperasi,10000.0,20000.0,2.735077062165259,98.38192129199514
+97,Aek Sipaulak Hosa Loja,Wisata Buatan,08.30 - 18.30,"Silalahi 1, Paropo, Kec. Silahsabungan, Kabupaten Dairi, Sumatera Utara 22281",4.6,beroperasi,0.0,0.0,2.801026533557732,98.50145103617436
+98,Letter Z,Wisata Buatan,24 jam,"Pangaribuan, Siempat Nempu Hulu, Dairi Regency, North Sumatra Utara",4.1,beroperasi,25000.0,25000.0,2.8373610108088347,98.25859632083154
+99,Parhonasan,Wisata Buatan,08.30 - 18.00,"Sempung Polling, Lae Parira, Dairi Regency, North Sumatra 22281",4.2,beroperasi,0.0,0.0,2.8076761801605605,98.1821342409364
+100,Tombak Sulusulu,Wisata Alam,24 jam,"Marbun Tonga Marbun Dolok, Bakti Raja, Simamora, Humbang Hasundutan, Kabupaten Humbang Hasundutan, Sumatera Utara 22457",4.5,beroperasi,0.0,0.0,2.30799480099924,98.80609313432092
+101,Aek Bath Sitio-tio,Wisata Alam,24 jam,"Sitio-Tio,, Siunong Unong Julu, Kec. Bakti Raja, Kabupaten Humbang Hasundutan, Sumatera Utara 22457",4.5,beroperasi,0.0,0.0,2.3036644824882817,98.80432723432097
+102,Air Terjun Simolap,Wisata Alam,24 jam,"Sibongkare, Tara bintang, Humbang Hasundutan Regency, North Sumatra 22456",4.9,beroperasi,0.0,0.0,2.2711197303957404,98.51857442082807
+103,Simamora Island,Wisata Alam,24 jam,"Tipang, Bakti Raja, Humbang Hasundutan Regency, North Sumatra",5.0,beroperasi,0.0,0.0,2.3440367210437554,98.82336422082844
+104,Air Terjun Pollung,Wisata Alam,24 jam,"Purba Baringin, Pakkat, Humbang Hasundutan Regency, North Sumatra 22455",4.2,beroperasi,0.0,0.0,2.1312944261352422,98.5441719073346
+105,Bakkara Village,Wisata Alam,24 jam,"Simamora, Bakti Raja, Humbang Hasundutan Regency, North Sumatra 22457",4.8,beroperasi,0.0,0.0,2.309688894662536,98.80873650396826
+106,Tao Sipinggan,Wisata Alam,24 jam,"Pargaulan, Lintong Nihuta, Humbang Hasundutan Regency, North Sumatra 22475",5.0,beroperasi,0.0,0.0,2.2578571488739394,98.85484469384257
+107,Air Terjun Sigota gota Sipultak Hoda,Wisata Alam,24 jam,"Tipang, Dolok sanggul, Humbang Hasundutan Regency,",4.6,beroperasi,0.0,0.0,2.3559239918217845,98.805754263157
+108,Dolok Pottas,Wisata Alam,24 jam,"Sihombu, Tara bintang, Humbang Hasundutan Regency, North Sumatra 22456",4.5,beroperasi,0.0,0.0,2.2384191313836848,98.45567430548472
+109,Tuan Nagani Paradise,Wisata Buatan,24 jam,Humbang Hasundutan,4.6,beroperasi,18000.0,18000.0,2.248364173890753,98.67322187664908
+110,Air Terjun Efrata,Wisata Alam,24 jam,"Sosor Dolok, Harian, Samosir Regency, North Sumatra 22396",4.5,beroperasi,0.0,0.0,2.537091727190248,98.6449521208296
+111,Air Terjun Sipisopiso,Wisata Alam,24 jam,"Desa Tongging, Simanindo",4.6,beroperasi,5000.0,5000.0,2.9167551705008496,98.51951452083212
+112,Pantai Gajah Tidur Paropo Silalahi,Wisata Alam,24 jam,"Jl. Makam Sidabutar Jalan, Tomok, Simanindo, Kabupaten Samosir, Sumatera Utara 22395",4.1,beroperasi,0.0,0.0,2.831196437896846,98.52662246315997
+113,Pemandian Air Panas Rianiate,Wisata Alam,24 jam,"Paropo I, Silahisabungan, Dairi Regency, North Sumatra",4.2,beroperasi,0.0,0.0,2.5307880567488503,98.7337321919938
+114,Bukit Beta Tuk-tuk,Wisata Alam,24 jam,"Tomok, Simanindo, Samosir Regency, North Sumatra 22395",4.6,beroperasi,0.0,0.0,2.661213384375491,98.84684237033036
+115,Pasir Putih Parbaba,Wisata Alam,24 jam,"Desa Huta Bolon, Kecamatan Pangururan",3.8,beroperasi,5000.0,5000.0,2.6967247534948746,98.69005631394812
+116,Pantai Batuhoda,Wisata Alam,09.30 - 18.00,"JL. Raya, Cinta Dame, Simanindo, Kabupaten Samosir, Sumatera Utara 22395",4.5,beroperasi,0.0,0.0,2.7601236233591098,98.72538180548796
+117,Air Terjun Turunan Buhit (Jabel),Wisata Alam,24 Jam,"Tonduhan, Hatonduhan, Simalungun Regency, North Sumatra 21181",4.5,beroperasi,0.0,0.0,2.857505631025593,99.22376443247404
+118,Pemandian Alam Sejuk,Wisata Alam,08:00 - 18:00,"Dolok Hataran, Kec. Siantar",4.1,beroperasi,10000.0,10000.0,2.969982657652832,99.16853539384704
+119,Bukit Indah Simarjarunjung,Wisata Alam,24 Jam,"Jl. Simarjarunjung, Butu Bayu Pane Raja, Kec. Dolok Pardamean",4.3,beroperasi,5000.0,5000.0,2.813506292007093,98.78124308864622
+120,Bah Salak Waterfall,Wisata Alam,24 Jam,"Nagur Usang, Tapian Dolok, Simalungun Regency, North Sumatra 21154",4.6,beroperasi,0.0,0.0,3.0697986926073986,99.03394713617632
+121,Air Terjun Tonduhan,Wisata Alam,24 Jam,"Desa Buntu Bayu, Kec. Tonduhan",4.1,beroperasi,0.0,0.0,2.81000367963384,99.1885103208314
+122,Kebun Teh Sidamanik,Wisata Alam,24 Jam,"Desa Bah Butong, Kec. Sidamanik",4.6,beroperasi,,,2.8603077834594752,98.90801049039572
+123,Pemandian alam Bah Damanik,Wisata Alam,08:00 - 19:00,"Ambarisan, Sidamanik, Simalungun Regency, North Sumatra 21161",4.3,beroperasi,5000.0,5000.0,2.865273336431273,98.92082604966754
+124,Pinus Hills Simarjarunjung,Wisata Alam,24 Jam,"Simarjarunjung, Parik Sabungan, Kec. Dolok Pardamean, Kabupaten Simalungun, Sumatera Utara 21163",4.3,beroperasi,0.0,0.0,2.817192982812153,98.78272413432408
+125,Kawah Putih Dolok Tinggi Raja,Wisata Alam,09:00 - 17:00,"Dolok Marawa, Silau Kahean, Simalungun Regency, North Sumatra 21157",4.0,beroperasi,0.0,0.0,3.1498774620014363,98.78655231898344
+126,Tanjung Unta,Wisata Alam,24 Jam,"Jalan St. H.H. Damanik Tambun Raya Pamatang, Tigaras, Kec. Dolok Pardamean, Kabupaten simalungun",4.4,beroperasi,0.0,0.0,2.772405120461116,98.80831802083104
+127,Pantai Kenangan,Wisata Alam,07:00 - 12:00,"QRM3+MJ4, Jalan Besar Pematang Siantar Tigaras, Tigaras, Kec. Dolok Pardamean, Kabupaten Simalungun,",4.3,beroperasi,0.0,0.0,2.7844166014427234,98.8041355073385
+128,Objek Wisata Pantai Paris,Wisata Alam,24 Jam,"Tigaras, Dolok Pardamean, Simalungun Regency,",4.3,beroperasi,15000.0,15000.0,2.801775749425957,98.7801203650101
+129,Pulau Tao Silalahi,Wisata Alam,07:00 - 17:00 ,"Desa Silalahi I, Kec. Silahisabungan",4.5,beroperasi,0.0,0.0,2.7910710838099213,98.53290249199549
+130,Wisata Anugerah Indah Sippan,Wisata Alam,06:00 - 17:00 ,"Desa Sippan Tigaraja, Kecamatan Pamatang Silimahuta, Naga Saribu, Kec. Pamatang Silima Huta, Kabupaten Simalungun, Sumatera Utara 21167",4.7,beroperasi,0.0,0.0,2.907177547941996,98.56500109199624
+131,Manigom Nauli,Wisata Alam,08:00 - 18:00 ,"Buntu Bartong, Tiga Dolok, Kec. Dolok Panribuan, Kabupaten Simalungun, Sumatera Utara",4.4,beroperasi,0.0,0.0,2.8197910091597844,99.03792030548831
+132,Rumah Bolon Pematang Purba,Wisata Budaya / Sejarah,10:00 - 16:00 ,"Desa Pematang Purba, Kec. Purba",4.2,beroperasi,0.0,0.0,2.911056526882177,98.68103992083203
+133,Simalungun Museum,Wisata Budaya / Sejarah,07:00 - 17:00 ,"Jalan Jenderal Sudirman P, Proklamasi, Kec. Siantar Bar., Kota Pematang Siantar, Sumatera Utara 21144",4.2,beroperasi,5000.0,5000.0,2.9545982120070557,99.06099711563836
+134,Pemandian Air Soda Parbubu,Wisata Alam,09:00 - 17:00,"Desa Parbubu, Kecamatan Tarutung",4.1,beroperasi,5000.0,5000.0,2.000828288473734,98.96587407664778
+135,Tamaro Hot Spring,Wisata Alam,06:00 - 22:00,"Jl. AM. Tambunan, Hutabarat, Partali Toruan, Kec. Tarutung, Kabupaten Tapanuli Utara, Sumatera Utara 22413",4.3,beroperasi,10000.0,10000.0,2.0274519793105066,98.97834895977934
+136,Pulau Pardepur,Wisata Alam,24 Jam,"Sibandang, Muara, North Tapanuli Regency, North Sumatra",4.3,beroperasi,0.0,0.0,2.352143808568812,98.8997419990097
+137,Galeri Umkm Tapanuli Utara,Wisata Alam,24 Jam,"Situmeang Hasundutan, North Tapanuli Regency, North Sumatra",4.5,beroperasi,0.0,0.0,2.0748359775581573,98.94342494781242
+138,Sopo Partungkoan Tarutung,Wisata Budaya / Sejarah,10:00 - 17:00 ,"Desa Hutatoruan VI, Kecamatan Tarutung, Kabupaten Tapanuli Utara.",4.3,beroperasi,0.0,0.0,2.0244091293210404,98.96240994781218
+139,Air Terjun Nai sogop,Wisata Alam,07.00 - 18.00,"HJQC+JHW, Sarimarrihit, Kec. Sianjur Mula Mula, Kabupaten Samosir, Sumatera Utara 22396",4.4,beroperasi,0.0,0.0,2.591226177946073,98.62214953172492

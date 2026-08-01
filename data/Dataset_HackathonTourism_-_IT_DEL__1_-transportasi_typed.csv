@@ -1,0 +1,18 @@
+transport-name,direction,jenis-mobil,description,operational-hour,harga_min,harga_max
+Mobil KBT (Koperasi Bintang Timur),"Medan, Pemtang Siantar, Parapat, Porsea, Balige, Siborong borong, Tarutung, Dolok Sanggul, Muara, Pahae, Sipahutar, Penyabungan, Tantom",Mitsubishi L300 dgn 8 Kursi penumpang," angkutan umum yang merujuk pada Koperasi Bintang Tapanuli, sebuah koperasi yang menyediakan layanan angkutan penumpang, khususnya di wilayah Tapanuli, Sumatera Utara",24 jam,50000,90000
+Mobil KBT (Koperasi Bintang Timur) Eksekutif,"Medan, Pemtang Siantar, Parapat, Porsea, Balige, Siborong borong, Tarutung, Dolok Sanggul, Muara, Pahae, Sipahutar, Penyabungan, Tantom",Toyota Hiace Commuter," angkutan umum eksekutif yang merujuk pada Koperasi Bintang Tapanuli, sebuah koperasi yang menyediakan layanan angkutan penumpang, khususnya di wilayah Tapanuli, Sumatera Utara",24 jam,100000,140000
+Mobil KPT (Kevin Pratama Trans),"Medan, Tebing Tinggi, Siantar, Parapat, Laguboti, Porsea, Balige, Siborong borong, Tarutung",Mitsubishi L300 dgn 8 Kursi penumpang / Isuzu ELF dgn 14 Kursi Penumpang,"Tujuan Dengan hadirnya PT.KEVIN PRATAMA TRANS(KPT) untuk membuat perubahan di bidang transportasi darat yang menciptakan PELAYANAN dan KENYAMANAN yg lebih baik ke depan buat masyarakat (Penumpang) yg melakukan perjalanan dari Medan ke Tapanuli begitu juga sebaliknya.
+Mari kita jadikan Group ini sebagai ruang publik menjalin silaturahmi berbagi informasi, berbagi ide dan gagasan yg membangun untuk kemajuan ke depan agar pelayanan transportasi dapat ditingkatkan PT.KEVIN PRATAMA TRANS(KPT)",24 jam,70000,80000
+PT. Raja Napogos,"Tebing TInggi, Pematang Siantar, Parapat, Porsea, Parsoburan, Balige, Parlilitan, Siborong borong, Dolok Sanggul, Sibolga, Pakkat, Tarutung",Mitsubishi FUSO Canter,,07.00 - 22.00,30000,90000
+KMP Kaldera Toba,Balige ke Onan Runggu,Ferry,,06.30,3500,250000
+KMP Kaldera Toba,Onan Runggu ke Balige,Ferry,,08.00,3500,250000
+KMP Kaldera Toba,Onan Runggu ke Muara,Ferry,,11.30,3500,250000
+KMP Kaldera Toba,Muara ke Onan Runggu,Ferry,,13.00,3500,250000
+KMP Ihan Batak & KMP Pora - Pora,Ajibata ke Ambarita,Ferry,,07.30 - 20.00,3500,250000
+KMP Ihan Batak & KMP Pora - Pora,Ambarita ke Ajibata,Ferry,,09.00 - 21.15,3500,250000
+KMP Tao Toba I & KMP Tao Toba II,Ajibata ke Tomok,Ferry,,05.00 - 19.40,3500,250000
+KMP Tao Toba I & KMP Tao Toba II,Tomok ke Ajibata,Ferry,,06.00 - 21.00,3500,250000
+KMP Muara Putih I,Muara ke Sipinggan,Ferry,,06.30 dan 15.30,3500,250000
+KMP Muara Putih I,Sipinggan ke Muara,Ferry,,08.00 dan 17.00,3500,250000
+KMP Sumut I & KMP Sumut II,Tigaras ke Simanindo,Ferry,,07.00 - 19.00,3500,250000
+KMP Sumut I & KMP Sumut II,Simanindo ke Tigaras,Ferry,,08.00 - 20.00,3500,250000

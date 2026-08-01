@@ -1,0 +1,158 @@
+# Ferry Detector — klasifikasi sisi danau per destinasi
+# ground truth: deteksi_kabupaten (independen) ; prediksi: sisi_danau
+
+place-name,kabupaten_ground_truth,truth_butuh_feri_side,prediksi_sisi_danau,hasil
+Pantai Pasir Putih Lumban Bul-bul Balige,Toba,mainland,mainland,TN
+Bukit Pahoda,Toba,mainland,mainland,TN
+Desa Wisata Silalahi Pagar Batu,Toba,mainland,mainland,TN
+Air Terjun Siboruon Balige,Toba,mainland,mainland,TN
+Puncak Paralayang Sibodiala,Toba,mainland,mainland,TN
+Pantai Pelangi,Toba,mainland,mainland,TN
+Penatapan Meat Balige,Toba,mainland,mainland,TN
+Tambunan Sunset Beach,Toba,mainland,mainland,TN
+Wisata Bukit Gibeon,Toba,mainland,mainland,TN
+Wisata Puncak Pangkodian,Toba,mainland,mainland,TN
+Bukit Tara Bunga,Toba,mainland,mainland,TN
+Air Terjun Sampuran,Toba,mainland,mainland,TN
+Geosite Sipinsur,Humbang Hasundutan,mainland,mainland,TN
+Wisata Rumah Pohon,Toba,mainland,mainland,TN
+Air Terjun Situmurun,Toba,mainland,mainland,TN
+Batu Basiha,Toba,mainland,mainland,TN
+Air Terjun Sigura-Gura,Toba,mainland,mainland,TN
+Puncak Huta Ginjang,Tapanuli Utara,mainland,mainland,TN
+Pantai Parparean 2,Toba,mainland,mainland,TN
+Boli Boli Hot Spring,Tapanuli Utara,mainland,mainland,TN
+Bukit Senyum,Toba,mainland,mainland,TN
+Panorama Adian Nalambok,Toba,mainland,mainland,TN
+Arung Jeram Desa Parhitean,Toba,mainland,mainland,TN
+Pantai Lumban Silintong,Toba,mainland,mainland,TN
+Pantai Pakkodian Tampahan,Toba,mainland,mainland,TN
+Wisata Alam Fishing-Camp Siarubung,Samosir,samosir,samosir,TP
+Air Terjun Binanga Bolon,Simalungun,mainland,mainland,TN
+Air Terjun Sigarattung,Samosir,samosir,samosir,TP
+Batu Marhosa,Samosir,samosir,samosir,TP
+Danau Sidihoni,Samosir,samosir,samosir,TP
+Bukit Sidihoni,Samosir,samosir,samosir,TP
+Cottage Aek Tawar Sari,Samosir,samosir,samosir,TP
+Panorama Lembah Bakara,Tapanuli Utara,mainland,mainland,TN
+Bukit Simargulang Ombun,Samosir,samosir,samosir,TP
+Bukit Sipatungan,Samosir,samosir,samosir,TP
+Air Terjun Sitapigagan,Samosir,samosir,samosir,TP
+Singgolom,Toba,mainland,mainland,TN
+Puncak Panorama Aek Nauli,Simalungun,mainland,mainland,TN
+Pusat Informasi Toba Caldera UNESCO Global Geopark,Samosir,samosir,samosir,TP
+Caldera toba nomadic escape (glamour camping),Toba,mainland,mainland,TN
+Bukit Holbung,Samosir,samosir,samosir,TP
+Batu lihi star,Simalungun,mainland,mainland,TN
+Batu Maroppa,Samosir,samosir,samosir,TP
+Togaraja,Samosir,samosir,samosir,TP
+Pantai Pulo Tao,Samosir,samosir,samosir,TP
+Desa Wisata Sigapiton,Toba,mainland,mainland,TN
+Menara Pandang Simanindo,Samosir,samosir,samosir,TP
+Bukit Burung,Samosir,samosir,samosir,TP
+Air Terjun Tombak Pangaribuan,Samosir,samosir,samosir,TP
+Pantai Silalahi,Dairi,mainland,mainland,TN
+Aek Rangat Pangururan,Samosir,samosir,samosir,TP
+PENATAPAN PARHALLOW SIGARANTUNG,Samosir,samosir,samosir,TP
+Batu Gantung,Simalungun,mainland,mainland,TN
+Gunung Pusuk Buhit,Samosir,samosir,samosir,TP
+Bukit Sipolha,Simalungun,mainland,mainland,TN
+Gua Liang Sipege,Toba,mainland,mainland,TN
+Monumen Raja SONAKMALELA,Toba,mainland,mainland,TN
+Makam Sisingamangaraja XII,Toba,mainland,mainland,TN
+Desa Adat Ragi Hotang,Toba,mainland,mainland,TN
+Monumen Perang Dunia II,Toba,mainland,mainland,TN
+Monumen D.I. Panjaitan ,Toba,mainland,mainland,TN
+Mual Sipangolu (Mual Sisingamangaraja),Humbang Hasundutan,mainland,mainland,TN
+Mual Sirambe,Toba,mainland,mainland,TN
+Desa Wisata Tomok Parsaoran,Samosir,samosir,samosir,TP
+Kampung Ulos Hutaraja,Samosir,samosir,samosir,TP
+Patung Sigalegale,Samosir,samosir,samosir,TP
+Istana Raja Sisingamangaraja,Humbang Hasundutan,mainland,mainland,TN
+Batu Kursi Raja Siallagan ( Stone Chair of King Siallagan ),Samosir,samosir,samosir,TP
+Sopo Guru Tatea Bulan | ᯘᯬᯇᯬ ᯎᯮᯒᯮ ᯖᯖᯩᯀ ᯅᯮᯞᯉ᯲,Samosir,samosir,samosir,TP
+Rumah Pesanggrahan Bung Karno,Simalungun,mainland,mainland,TN
+Museum Huta Bolon Simanindo,Samosir,samosir,samosir,TP
+Tugu Toga Aritonang,Tapanuli Utara,mainland,mainland,TN
+Pemandian Aek Sipitu Dai,Samosir,samosir,samosir,TP
+Labersa Toba Fantasi Waterpark,Toba,mainland,mainland,TN
+TB Silalahi Swimming Pool,Toba,mainland,mainland,TN
+Taman Eden 100,Toba,mainland,mainland,TN
+Bukit Doa,Tapanuli Utara,mainland,mainland,TN
+Makam DR. I.L. Nommensen,Toba,mainland,mainland,TN
+Gereja Tua HKBP SIgumpar,Toba,mainland,mainland,TN
+Gereja Tua HKBP Balige,Toba,mainland,mainland,TN
+Taman Wisata Iman Dairi,Dairi,mainland,mainland,TN
+Salib Kasih Tarutung,Tapanuli Utara,mainland,mainland,TN
+"Patung Yesus, Bukit Sibeabea",Samosir,samosir,samosir,TP
+Taman Wisata Goa Bunda Maria,Samosir,samosir,samosir,TP
+"Balerong - Balige, Toba Samosir, North Sumatra, Indonesia",Toba,mainland,mainland,TN
+Museum Batak T.B. Silalahi Center,Toba,mainland,mainland,TN
+"Batak Museum
+",Samosir,samosir,samosir,TP
+Pasar Tomok,Samosir,samosir,samosir,TP
+Air Terjun Lae,Dairi,mainland,mainland,TN
+Panatapan Puncak Sidiangkat,Dairi,mainland,mainland,TN
+Sicike cike,Dairi,mainland,mainland,TN
+Batu Sigadap,Dairi,mainland,mainland,TN
+Rumah Adat Pak Pak,Dairi,mainland,mainland,TN
+Jembatan Lae Pendaroh,Dairi,mainland,mainland,TN
+Aek Sipaulak Hosa Loja,Dairi,mainland,mainland,TN
+Letter Z,Dairi,mainland,mainland,TN
+Parhonasan,Dairi,mainland,mainland,TN
+Tombak Sulusulu,Humbang Hasundutan,mainland,mainland,TN
+Aek Bath Sitio-tio,Humbang Hasundutan,mainland,samosir,FP
+Air Terjun Simolap,Humbang Hasundutan,mainland,mainland,TN
+Simamora Island,Humbang Hasundutan,mainland,mainland,TN
+Air Terjun Pollung,Humbang Hasundutan,mainland,mainland,TN
+Bakkara Village,Humbang Hasundutan,mainland,mainland,TN
+Tao Sipinggan,Humbang Hasundutan,mainland,mainland,TN
+Air Terjun Sigota gota Sipultak Hoda,Humbang Hasundutan,mainland,mainland,TN
+Dolok Pottas,Humbang Hasundutan,mainland,mainland,TN
+Tuan Nagani Paradise,Humbang Hasundutan,mainland,mainland,TN
+Air Terjun Efrata,Samosir,samosir,samosir,TP
+Pantai Gajah Tidur Paropo Silalahi,Samosir,samosir,samosir,TP
+Pemandian Air Panas Rianiate,Dairi,mainland,mainland,TN
+Bukit Beta Tuk-tuk,Samosir,samosir,samosir,TP
+Pasir Putih Parbaba,Samosir,samosir,samosir,TP
+Pantai Batuhoda,Samosir,samosir,samosir,TP
+Air Terjun Turunan Buhit (Jabel),Simalungun,mainland,mainland,TN
+Bukit Indah Simarjarunjung,Simalungun,mainland,mainland,TN
+Bah Salak Waterfall,Simalungun,mainland,mainland,TN
+Air Terjun Tonduhan,Simalungun,mainland,mainland,TN
+Pemandian alam Bah Damanik,Simalungun,mainland,mainland,TN
+Pinus Hills Simarjarunjung,Simalungun,mainland,mainland,TN
+Kawah Putih Dolok Tinggi Raja,Simalungun,mainland,mainland,TN
+Tanjung Unta,Simalungun,mainland,mainland,TN
+Pantai Kenangan,Simalungun,mainland,mainland,TN
+Objek Wisata Pantai Paris,Simalungun,mainland,mainland,TN
+Pulau Tao Silalahi,Dairi,mainland,mainland,TN
+Wisata Anugerah Indah Sippan,Simalungun,mainland,mainland,TN
+Manigom Nauli,Simalungun,mainland,mainland,TN
+Rumah Bolon Pematang Purba,Simalungun,mainland,mainland,TN
+Pemandian Air Soda Parbubu,Tapanuli Utara,mainland,mainland,TN
+Tamaro Hot Spring,Tapanuli Utara,mainland,mainland,TN
+Pulau Pardepur,Tapanuli Utara,mainland,mainland,TN
+Galeri Umkm Tapanuli Utara,Tapanuli Utara,mainland,mainland,TN
+Sopo Partungkoan Tarutung,Tapanuli Utara,mainland,mainland,TN
+Air Terjun Nai sogop,Samosir,samosir,samosir,TP
+
+# Confusion matrix (positif = sisi Samosir / butuh feri)
+,pred_samosir,pred_mainland
+truth_samosir,37,0
+truth_mainland,1,95
+
+metrik,nilai_%
+accuracy,99.25
+precision,97.37
+recall,100.0
+f1,98.67
+destinasi_berlabel,133
+destinasi_tak_terlabel,3
+
+# Keputusan penyeberangan tingkat-pasangan (cari_feri)
+pasangan_diuji,400
+accuracy,99.25
+precision,98.08
+recall,100.0
+f1,99.03

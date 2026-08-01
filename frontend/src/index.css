@@ -1,0 +1,426 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Tema terang: kertas hangat, tinta hijau tua, aksen sage & amber. */
+    --background: 80 16% 92.5%; /* sama persis dengan --surface-paper */
+    --foreground: 163 66% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 163 66% 14%;
+    --primary: 129 18% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 129 18% 92%;
+    --secondary-foreground: 163 66% 14%;
+    --muted: 75 16% 90%;
+    --muted-foreground: 163 14% 42%;
+    --accent: 44 100% 50%;
+    --accent-foreground: 163 66% 14%;
+    --border: 163 30% 14% / 0.12;
+    --input: 163 30% 14% / 0.14;
+    --ring: 129 18% 45%;
+    --radius: 1rem;
+
+    /* ══════════════════════════════════════════════════════════════
+       ATURAN WARNA — palet Danau Toba
+       ══════════════════════════════════════════════════════════════
+       Empat warna, masing-masing memetakan satu lapis lanskap danau:
+
+         forest #0C3B2E  air danau di kedalaman  → tinta & permukaan pekat
+         sage   #6D9773  perbukitan & pohon pinus → aksi utama
+         sand   #BB8A52  tanah vulkanik & ulos    → aksen hangat, ornamen
+         amber  #FFBA00  matahari di kaldera      → SOROTAN saja
+
+       ── Aturan 1: alokasi 60-30-10 ────────────────────────────────
+       60% kertas/putih · 30% forest+sage · 10% amber.
+       Amber adalah bumbu, bukan warna dasar: begitu ia dipakai di
+       banyak tempat sekaligus, tidak ada lagi yang tersorot.
+       Aksen hangat yang berulang (label, ikon, garis) memakai SAND.
+
+       ── Aturan 2: isian vs tinta tidak pernah ditukar ─────────────
+       sage (~2.6:1) dan amber (~1.9:1) di atas kertas terang tidak
+       lolos ambang WCAG 4.5:1, jadi keduanya HANYA untuk isian.
+       Untuk teks pakai varian --*-ink yang sudah digelapkan.
+
+       ── Aturan 3: tiap isian punya pasangan --on-* ────────────────
+       Warna teks di atas sebuah isian tidak boleh ditebak; ambil dari
+       token --on-* di bawah supaya kontrasnya terjamin di mana pun.
+       ══════════════════════════════════════════════════════════════ */
+    --brand-sage: 129 18% 51%;    /* #6D9773 — isian/aksi utama */
+    --brand-sage-ink: 129 26% 29%; /* varian gelap: sage sebagai warna teks */
+    --brand-amber: 44 100% 50%;   /* #FFBA00 — isian/sorotan, BUKAN untuk teks */
+    --brand-amber-ink: 36 96% 31%; /* varian gelap: amber sebagai warna teks */
+    --brand-sand: 32 44% 53%;     /* #BB8A52 — aksen hangat sekunder */
+    --brand-sand-ink: 32 52% 30%; /* varian gelap: sand sebagai warna teks */
+    --brand-forest: 163 66% 14%;  /* #0C3B2E — tinta & permukaan pekat */
+
+    /* Pasangan teks untuk tiap isian (Aturan 3). Angka di bawah DIUKUR,
+       bukan ditaksir — beberapa dugaan awal meleset jauh.
+
+       Yang mengejutkan: amber terang butuh tinta GELAP di atasnya. Putih
+       di atas #FFBA00 hanya 1.70:1, nyaris tak terbaca.
+
+       Perhatikan sage & sand: TIDAK ADA warna teks yang mencapai 4.5:1 di
+       atas keduanya — keduanya nada tengah. Jadi keduanya bukan alas yang
+       sah untuk teks ukuran normal. Kalau sebuah isian harus memuat teks,
+       pakai varian --*-ink sebagai isiannya (putih di atasnya 7.3–7.5:1). */
+    --on-sage: 0 0% 100%;         /* putih di atas sage    —  3.26:1 · teks besar/tebal saja */
+    --on-sand: 0 0% 100%;         /* putih di atas sand    —  3.02:1 · teks besar/tebal saja */
+    --on-sage-ink: 0 0% 100%;     /* putih di atas sage-ink —  7.52:1 · AA */
+    --on-sand-ink: 0 0% 100%;     /* putih di atas sand-ink —  7.27:1 · AA */
+    --on-amber: 163 66% 14%;      /* forest di atas amber  —  7.35:1 · AA */
+    --on-forest: 80 16% 92.5%;    /* kertas di atas forest — 10.78:1 · AA */
+
+    /* Tinta teks berjenjang — pengganti skala slate dari tema gelap. */
+    --ink: 163 66% 14%;
+    --ink-soft: 163 18% 32%;
+    --ink-faint: 163 13% 43%;
+
+    /* Permukaan. --surface-paper adalah SATU-SATUNYA sumber warna
+       kertas halaman; sebelumnya nilainya ditulis ulang sebagai #edefe9
+       di empat berkas dan sempat melenceng dari --background. */
+    --surface-paper: 80 16% 92.5%; /* = #EDEFE9 */
+    --surface-1: 0 0% 100%;
+    --surface-2: 75 22% 96%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    @apply m-0 min-h-screen bg-surface-paper text-ink antialiased;
+    font-family: Inter, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+}
+
+/* Latar halaman: kertas hangat dengan pendar sage & amber yang lembut */
+/* Pendar latar mengikuti Aturan 1: sage & sand memimpin, amber ditahan
+   tipis (0.16 → 0.08) supaya sorotan amber di dalam konten tetap terbaca
+   sebagai sorotan, bukan menyatu dengan latarnya. */
+body {
+  background:
+    radial-gradient(1100px 620px at 50% -10%, hsl(var(--brand-sage) / 0.22) 0%, transparent 60%),
+    radial-gradient(1000px 620px at -8% 30%, hsl(var(--brand-sand) / 0.16) 0%, transparent 55%),
+    radial-gradient(900px 520px at 88% 6%, hsl(var(--brand-amber) / 0.08) 0%, transparent 58%),
+    hsl(var(--surface-paper));
+  background-attachment: fixed;
+}
+
+.app {
+  @apply mx-auto max-w-[1400px] px-4 pb-10;
+}
+
+.glass {
+  @apply rounded-2xl border border-ink/[0.07] bg-white shadow-[0_10px_30px_-16px_hsl(var(--brand-forest)/0.35)];
+}
+
+/* Permukaan lebih tegas untuk navbar & panel chat */
+.glass-strong {
+  @apply rounded-2xl border border-ink/[0.09] shadow-[0_20px_50px_-24px_hsl(var(--brand-forest)/0.45)] backdrop-blur-2xl;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.88));
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(
+    100deg,
+    hsl(var(--brand-sage)),
+    hsl(var(--brand-sand)) 45%,
+    hsl(var(--brand-amber))
+  );
+}
+
+/* Ring sage lembut saat kartu di-hover */
+.card-glow {
+  @apply transition-all duration-300;
+}
+
+.card-glow:hover {
+  border-color: hsl(var(--brand-sage) / 0.45);
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 0 1px hsl(var(--brand-sage) / 0.2),
+    0 22px 44px -20px hsl(var(--brand-forest) / 0.4);
+}
+
+/* Spotlight mengikuti kursor — koordinat diisi lewat --mx/--my di onMouseMove */
+.spotlight {
+  @apply relative;
+}
+
+.spotlight::before {
+  content: "";
+  @apply pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300;
+  /* Salah satu dari sedikit tempat amber dipakai penuh (Aturan 1): hanya
+     satu kartu tersorot pada satu waktu, jadi ia benar-benar menyorot. */
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, 50%),
+    hsl(var(--brand-amber) / 0.18),
+    transparent 62%
+  );
+}
+
+.spotlight:hover::before {
+  @apply opacity-100;
+}
+
+/* Butiran halus supaya gradient besar tidak terlihat "banding" */
+.grain::after {
+  content: "";
+  @apply pointer-events-none absolute inset-0 rounded-[inherit] opacity-[0.025] mix-blend-multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Ornamen bertema Batak ────────────────────────────────────────────
+   Terinspirasi motif tenun ulos dan ukiran gorga pada rumah bolon —
+   belah ketupat dan pita bergaris yang berulang. Sengaja dibangun dari
+   gradient ber-token, bukan berkas SVG dengan warna tertulis, supaya
+   ornamennya ikut berubah kalau palet berubah dan tidak pernah
+   menyimpang dari Aturan 1.
+
+   Keduanya murni dekoratif: tidak membawa makna yang perlu dibaca,
+   jadi aman dari aturan "jangan sampaikan informasi lewat warna saja". */
+
+/* Garis pemisah: rambut halus sand dengan belah ketupat di tengah. */
+.gorga-rule {
+  @apply relative mx-auto h-px w-full max-w-xs;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--brand-sand) / 0.5) 18%,
+    hsl(var(--brand-sand) / 0.5) 82%,
+    transparent
+  );
+}
+
+.gorga-rule::before {
+  content: "";
+  @apply absolute left-1/2 top-1/2 h-[7px] w-[7px] -translate-x-1/2 -translate-y-1/2 rotate-45;
+  background: hsl(var(--brand-sand) / 0.8);
+}
+
+/* Pita tenun tipis untuk tepi section — deretan belah ketupat kecil. */
+.ulos-band {
+  @apply h-1.5 w-full;
+  background-image:
+    linear-gradient(135deg, hsl(var(--brand-sand) / 0.55) 25%, transparent 25%),
+    linear-gradient(225deg, hsl(var(--brand-sand) / 0.55) 25%, transparent 25%),
+    linear-gradient(315deg, hsl(var(--brand-sand) / 0.55) 25%, transparent 25%),
+    linear-gradient(45deg, hsl(var(--brand-sand) / 0.55) 25%, transparent 25%);
+  background-position:
+    0 0,
+    0 0,
+    6px 0,
+    6px 0;
+  background-size: 12px 12px;
+  background-repeat: repeat-x;
+}
+
+/* Angka berlebar tetap. Harga dan jarak dianimasikan CountUp, dan dengan
+   angka proporsional lebarnya berubah tiap frame sehingga barisnya
+   bergoyang. tabular-nums mengunci lebar tiap digit. */
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.vthumb {
+  @apply h-16 w-[84px] shrink-0 rounded-xl shadow-md shadow-brand-forest/20 transition-transform duration-300;
+}
+
+.card-glow:hover .vthumb,
+.vthumb:hover {
+  transform: scale(1.06) rotate(-1.5deg);
+}
+
+/* Leaflet overrides */
+.leafmap {
+  @apply z-0 h-[290px] w-full rounded-2xl border border-ink/[0.09];
+}
+
+.leaflet-container {
+  @apply rounded-2xl font-sans;
+  background: hsl(var(--surface-paper) / 0.96);
+}
+
+.lpin {
+  @apply relative grid h-[26px] w-[26px] place-items-center rounded-full border-2 border-white/85 text-[0.72rem] font-extrabold;
+  color: hsl(var(--on-sage));
+  background: linear-gradient(135deg, hsl(var(--brand-sage)), hsl(var(--brand-forest)));
+  box-shadow: 0 2px 10px hsl(var(--brand-forest) / 0.45);
+}
+
+.lpin::after {
+  content: "";
+  @apply absolute rounded-full border-2 border-brand-sage/45;
+  inset: -6px;
+  animation: pinpulse 2s ease-out infinite;
+}
+
+.lpin.dep {
+  /* Titik berangkat — satu-satunya pin amber di peta, jadi ia langsung
+     terbaca sebagai pangkal rute di antara pin sage lainnya. */
+  color: hsl(var(--on-amber));
+  background: linear-gradient(135deg, hsl(var(--brand-amber)), hsl(var(--brand-sand)));
+}
+
+.lpin.dep::after {
+  border-color: hsl(var(--brand-amber) / 0.5);
+}
+
+.lpin.extra {
+  background: linear-gradient(135deg, #bb8a52, #8a6338);
+}
+
+@keyframes pinpulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.9;
+  }
+  70%,
+  100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+
+.route-anim {
+  stroke-dasharray: 9 8;
+  animation: dashmove 1.4s linear infinite;
+}
+
+@keyframes dashmove {
+  to {
+    stroke-dashoffset: -34;
+  }
+}
+
+/* Skeleton shimmer */
+.skel {
+  background: linear-gradient(100deg, hsl(var(--brand-forest) / 0.05) 40%, hsl(var(--brand-forest) / 0.1) 50%, hsl(var(--brand-forest) / 0.05) 60%);
+  background-size: 200% 100%;
+  @apply animate-shimmer border border-ink/[0.07];
+}
+
+.anim-in {
+  @apply animate-fade-up;
+}
+
+/* MapCard legacy classes kept for MapCard.tsx */
+.mapwrap {
+  @apply overflow-hidden;
+}
+
+.phsub {
+  @apply ml-auto text-[0.7rem] font-semibold text-ink-faint;
+}
+
+.mutetext {
+  @apply m-0 text-sm leading-relaxed text-ink-soft;
+}
+
+.depbar {
+  @apply mt-3 flex gap-1.5;
+}
+
+.sqbtn {
+  @apply h-[38px] w-[38px] shrink-0 rounded-xl border border-ink/10 bg-ink/[0.05] text-sm text-ink transition hover:border-brand-sage/40;
+}
+
+.geo-msg {
+  @apply mt-1.5 text-[0.72rem] text-brand-sage-ink;
+}
+
+.geo-msg.err {
+  @apply text-red-600;
+}
+
+.nearwrap {
+  @apply mt-3 rounded-2xl border border-brand-sage/25 bg-brand-sage/5 p-3;
+}
+
+.neartitle {
+  @apply text-[0.74rem] font-extrabold tracking-wide text-brand-sage-ink;
+}
+
+.qchip {
+  @apply rounded-full border border-ink/10 bg-ink/[0.035] px-2.5 py-1 text-[0.72rem] font-semibold text-ink-soft transition hover:border-brand-amber/40 hover:text-brand-amber-ink;
+}
+
+.qchip.onq {
+  @apply border-brand-amber/45 text-brand-amber-ink;
+}
+
+.daybudget {
+  @apply mt-3 border-t border-ink/10;
+}
+
+.daybudget .row {
+  @apply flex items-center justify-between border-b border-ink/10 px-0.5 py-2 text-xs text-ink-soft;
+}
+
+.daybudget .row b {
+  @apply text-sm text-ink;
+}
+
+.daybudget .row.total {
+  @apply border-b-0;
+}
+
+.daybudget .row.total b {
+  @apply text-brand-amber-ink;
+}
+
+a.btn-plan.drive {
+  @apply mt-3 block no-underline;
+}
+
+.panel .ph {
+  @apply mb-3 flex items-center gap-2 font-display text-sm font-extrabold;
+}
+
+/* Tombol "Susun Rencana" — aksi paling penting di panel. Dulu teks putih
+   di atas sage→amber; di ujung amber kontrasnya hanya 1.70:1. Sekarang
+   sage-ink→forest: 7.52:1 → 12.50:1. */
+.btn-plan {
+  @apply flex w-full items-center justify-center gap-2 rounded-xl border-0 bg-gradient-to-r from-brand-sage-ink to-brand-forest px-3 py-3 text-sm font-extrabold text-on-sage-ink shadow-lg shadow-brand-forest/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-forest/45;
+}
+
+/* Umpan balik sentuh: chip kecil ikut naik sedikit saat di-hover. */
+.qchip {
+  @apply transition-all duration-200;
+}
+
+.qchip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px -8px hsl(var(--brand-forest) / 0.5);
+}

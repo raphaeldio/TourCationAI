@@ -1,0 +1,120 @@
+import type {
+  Bahasa, Itinerary, MinatOption, PlanForm, ProfilOption,
+  GayaJelajahOption,
+} from "./types";
+
+// Di dev, Vite mem-proxy /api -> http://localhost:8000.
+const BASE = "/api";
+
+async function jsonOrThrow<T>(res: Response): Promise<T> {
+  if (!res.ok) {
+    let detail = res.statusText;
+    try {
+      const body = await res.json();
+      detail = body.detail ?? detail;
+    } catch {
+      /* biarkan detail apa adanya */
+    }
+    throw new Error(detail);
+  }
+  return res.json() as Promise<T>;
+}
+
+export async function fetchMeta(): Promise<{
+  minat: MinatOption[];
+  profil: ProfilOption[];
+  gaya_jelajah: GayaJelajahOption[];
+}> {
+  return jsonOrThrow(await fetch(`${BASE}/meta`));
+}
+
+/** Malam = hari − 1 otomatis; 0 bila penginapan tidak diikutkan. */
+export function hitungMalam(form: PlanForm): number {
+  if (!form.include_penginapan) return 0;
+  return Math.max(form.n_days - 1, 0);
+}
+
+export async function planItinerary(form: PlanForm): Promise<Itinerary> {
+  const body = {
+    budget_total: form.budget_total,
+    n_days: form.n_days,
+    n_nights: hitungMalam(form),
+    n_orang: form.n_orang,
+    minat_wisata: form.minat_wisata.length ? form.minat_wisata : null,
+    max_attractions_per_day: form.max_attractions_per_day,
+    profil_pilihan: form.profil_pilihan,
+    use_osrm: true,
+    // Hanya relevan saat turis tidak menginap.
+    origin_lat: !form.include_penginapan && form.origin ? form.origin.lat : null,
+    origin_lon: !form.include_penginapan && form.origin ? form.origin.lon : null,
+    moda: form.moda,
+    // Mengaktifkan penghindaran destinasi yang libur mingguan.
+    tanggal_mulai: form.tanggal_mulai || null,
+    gaya_jelajah: form.gaya_jelajah,
+    hotel_pilihan: form.include_penginapan ? form.hotel_pilihan : null,
+  };
+  return jsonOrThrow(
+    await fetch(`${BASE}/itinerary`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    }),
+  );
+}
+
+/** Itinerary boleh null; `picks` dikirim agar biaya makan ikut pilihan turis. */
+export async function askAI(
+  question: string,
+  itinerary: Itinerary | null,
+  picks?: Record<string, number>,
+): Promise<string> {
+  const res = await jsonOrThrow<{ answer: string }>(
+    await fetch(`${BASE}/ai-search`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question, itinerary, picks: picks ?? {} }),
+    }),
+  );
+  return res.answer;
+}
+
+export async function fetchLanguages(): Promise<Bahasa[]> {
+  const r = await jsonOrThrow<{ languages: Bahasa[] }>(await fetch(`${BASE}/languages`));
+  return r.languages;
+}
+
+/** Terjemahan lewat model OpenAI yang sama dengan asisten perjalanan. */
+export async function translateText(
+  text: string,
+  source: string,
+  target: string,
+): Promise<string> {
+  const r = await jsonOrThrow<{ translatedText: string }>(
+    await fetch(`${BASE}/translate`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text, source, target }),
+    }),
+  );
+  return r.translatedText;
+}
+
+/** Terjemahkan label antarmuka; hanya teks statis yang dikirim ke model. */
+export async function translateUI(
+  strings: string[],
+  target: string,
+): Promise<Record<string, string>> {
+  const r = await jsonOrThrow<{ map: Record<string, string> }>(
+    await fetch(`${BASE}/translate-ui`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ strings, target }),
+    }),
+  );
+  return r.map;
+}
+
+export function rp(n: number | null | undefined): string {
+  if (n == null) return "—";
+  return "Rp" + Math.round(n).toLocaleString("id-ID");
+}

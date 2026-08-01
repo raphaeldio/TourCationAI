@@ -1,0 +1,6 @@
+config,label,ofs,budget_utilization_pct,total_distance_km,diversity_pct,runtime_s,penyeberangan,n_umkm
+A,ILP saja,104.081,52.9,103.42,100.0,0.429,-,3.667
+B,+ Route Optimizer,104.081,52.9,56.52,100.0,0.43,-,3.667
+C,+ Time Filter,104.081,52.9,56.52,100.0,0.448,-,3.667
+D,+ Ferry Detector,104.081,52.9,56.52,100.0,0.442,2,3.667
+E,Full System (+ UMKM),113.096,51.867,56.52,100.0,0.456,2,9
