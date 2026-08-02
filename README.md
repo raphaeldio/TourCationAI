@@ -4,14 +4,14 @@
 ## 1. Deskripsi Singkat
 
 Informasi wisata Danau Toba sebenarnya sudah melimpah — daftar destinasi, ulasan, dan rentang harga mudah ditemukan — namun wisatawan tetap kesulitan pada langkah berikutnya: **menyusun keputusan** berupa kombinasi destinasi, penginapan, dan tempat makan yang pasti tidak melampaui anggaran, masuk akal secara rute dan jam operasional, serta benar-benar menyentuh usaha lokal. Persoalan ini adalah *constrained optimization*, bukan pencarian informasi.
-
+  
 TourCation AI menyusun itinerary lengkap dari satu input (anggaran, durasi, jumlah orang, minat): agenda harian berjam, urutan rute, deteksi penyeberangan feri ke Samosir, rincian biaya, serta analisis dampak ekonomi ke UMKM lokal. **Inti sistem adalah model _Integer Linear Programming_ (PuLP + solver CBC)** yang memilih destinasi/kuliner/penginapan di bawah kendala anggaran, sehingga hasilnya deterministik, dapat direproduksi, dan setiap angkanya dapat ditelusuri ke dataset panitia. Pendekatan analitik pendukungnya mencakup *geospatial routing* (OSRM/haversine + *nearest-neighbour* untuk urutan kunjungan), *rule-based time-aware filtering* atas jam operasional, dan **UMKM Scorer** — pembobotan tiga sinyal (penyajian kuliner khas Batak, pola nama usaha lokal, keterjangkauan harga) yang menjadi suku tambahan pada fungsi objektif ILP.
 
 Model bahasa (`gpt-4o-mini`) ditempatkan **hanya pada lapisan antarmuka** untuk dua fitur opsional: AI Search yang dibumikan (*grounded/RAG-ringan*) pada itinerary aktif beserta cuplikan review dari dataset, dan penerjemah 18 bahasa. Harga, anggaran, jarak, dan koordinat tidak pernah dijadikan hasil generasi model — sehingga tidak ada ruang halusinasi pada angka yang menjadi dasar keputusan wisatawan.
 
 ## 2. Anggota Tim
 
-| Nama Lengkap | Peran dalam Tim | Kontak (Emai) |
+| Nama Lengkap | Peran dalam Tim | Kontak (Email) |
 | :--- | :--- | :--- |
 | [Raphael Diovana Tarigan(ketua tim)] | Full Stack Engineer - AI/Optimization | [Email: raphaelardeldiovana@gmail.com] |
 | [Michael Aaron Hutagaol] | UI/UX Engineer | [Email: michaelaaron062608@gmail.com] |
@@ -81,7 +81,7 @@ Tidak ada dataset tabular eksternal. Yang dipakai hanyalah **layanan geospasial 
 │   └── src/i18n.tsx          # Lapisan multibahasa
 ├── data/                     # 14 berkas CSV dataset panitia (*_typed.csv)
 ├── evaluasi/                 # Kerangka evaluasi model
-│   ├── evaluate.py           # Batch testing budget × durasi × wisatawan + ablatwion study
+│   ├── evaluate.py           # Batch testing budget × durasi × wisatawan + ablation study
 │   ├── modul/                # Evaluator per modul: ferry, rute, time_filter, umkm, ablation
 │   ├── evaluation_report.md  # Hasil eksekusi terakhir (siap dibaca tanpa menjalankan ulang)
 │   ├── evaluation_charts/    # 8 grafik hasil evaluasi
@@ -126,8 +126,8 @@ Aplikasi terdiri dari backend dan frontend, jadi diperlukan **dua terminal**. Ke
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/username/nama-repo-kalian.git
-cd 
+git clone https://github.com/raphaeldio/TourCationAI
+cd TourCationAI
 
 # 2. Buat virtual environment
 python -m venv .venv
