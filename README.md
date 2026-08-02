@@ -1,5 +1,5 @@
 # TourCation AI: Perencana Perjalanan Danau Toba Berbasis Optimasi Anggaran
-# Submission Hackathon IT DEL 2026
+# Submission Hackathon IT DEL 2026.
 
 > **PENTING - ATURAN BLIND REVIEW:** 
 > Peserta **DILARANG KERAS** mencantumkan nama institusi/universitas/sekolah asal di dalam file ini maupun di seluruh _source code_. Pelanggaran terhadap aturan ini dapat berakibat pada pengurangan nilai atau diskualifikasi.
