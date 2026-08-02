@@ -19,7 +19,7 @@ Model bahasa (`gpt-4o-mini`) ditempatkan **hanya pada lapisan antarmuka** untuk 
 | Nama Lengkap | Peran dalam Tim | Kontak (Email) |
 | :--- | :--- | :--- |
 | [Raphael Diovana Tarigan(ketua tim)] | Full Stack Engineer - AI/Optimization | [Email: raphaelardeldiovana@gmail.com] |
-| [Michael Aaron Hutagaol] | UI/UX Engineer | [Email: michaelaaron062608@gmail.com] |
+| [Michael Aaron Hutagaol] | UI/UX Designer | [Email: michaelaaron062608@gmail.com] |
 | [Sinari Ilene Situmorang] | Researcher & QA | [Email: sinariilenesitumorang1929@gmail.com ] |
 
 ## 3. Pemanfaatan Data Pariwisata Toba
