@@ -1,4 +1,4 @@
-# TourCation AI: Perencana Perjalanan Danau Toba Berbasis Optimasi Anggaran
+# TourCation AI: Website Perencanaan Wisata Personalisasi Berbasis Kecerdasan Buatan guna Meningkatkan Pengalaman Wisatawan dan Pemberdayaan UMKM Lokal
 # Submission Hackathon IT DEL 2026.
 
 > **PENTING - ATURAN BLIND REVIEW:** 
