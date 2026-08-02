@@ -1,9 +1,5 @@
 # TourCation AI — Perencana Perjalanan Danau Toba Berbasis Optimasi Anggaran — Submission AI Hackathon IT Del 2026
 
-> **PENTING - ATURAN BLIND REVIEW:**
-> Peserta **DILARANG KERAS** mencantumkan nama institusi/universitas/sekolah asal di dalam file ini maupun di seluruh _source code_. Pelanggaran terhadap aturan ini dapat berakibat pada pengurangan nilai atau diskualifikasi.
-
----
 
 ## 1. Deskripsi Singkat
 
@@ -15,11 +11,11 @@ Model bahasa (`gpt-4o-mini`) ditempatkan **hanya pada lapisan antarmuka** untuk 
 
 ## 2. Anggota Tim
 
-| Nama Lengkap | Peran dalam Tim | Kontak (Email / GitHub) |
+| Nama Lengkap | Peran dalam Tim | Kontak (Emai) |
 | :--- | :--- | :--- |
-| [Raphael Diovana Tarigan(ketua tim)] | Full StackEngineer - AI/Optimization — Implementasi UI - menghubungkan antara Frontend dan Backend - REST API Python dengan Framework FastAPI | [Email: raphaelardeldiovana@gmail.com] |
+| [Raphael Diovana Tarigan(ketua tim)] | Full Stack Engineer - AI/Optimization | [Email: raphaelardeldiovana@gmail.com] |
 | [Michael Aaron Hutagaol] | UI/UX Engineer | [Email: michaelaaron062608@gmail.com] |
-| [Sinari Ilene Situmorang] | Researcher & QA | [Email: ] |
+| [Sinari Ilene Situmorang] | Researcher & QA | [Email: sinariilenesitumorang1929@gmail.com ] |
 
 ## 3. Pemanfaatan Data Pariwisata Toba
 
@@ -85,7 +81,7 @@ Tidak ada dataset tabular eksternal. Yang dipakai hanyalah **layanan geospasial 
 │   └── src/i18n.tsx          # Lapisan multibahasa
 ├── data/                     # 14 berkas CSV dataset panitia (*_typed.csv)
 ├── evaluasi/                 # Kerangka evaluasi model
-│   ├── evaluate.py           # Batch testing budget × durasi × wisatawan + ablation study
+│   ├── evaluate.py           # Batch testing budget × durasi × wisatawan + ablatwion study
 │   ├── modul/                # Evaluator per modul: ferry, rute, time_filter, umkm, ablation
 │   ├── evaluation_report.md  # Hasil eksekusi terakhir (siap dibaca tanpa menjalankan ulang)
 │   ├── evaluation_charts/    # 8 grafik hasil evaluasi
@@ -131,7 +127,7 @@ Aplikasi terdiri dari backend dan frontend, jadi diperlukan **dua terminal**. Ke
 ```bash
 # 1. Clone repository
 git clone https://github.com/username/nama-repo-kalian.git
-cd nama-repo-kalian
+cd 
 
 # 2. Buat virtual environment
 python -m venv .venv
@@ -189,7 +185,7 @@ Buka `http://localhost:5173`, lalu:
 Dokumentasi interaktif tersedia di **http://localhost:8000/docs**. Contoh pemanggilan:
 
 ```bash
-curl -X POST http://localhost:8000/api/itinerary -H "Content-Type: application/json" -d "{\"budget_total\":5000000,\"n_days\":3,\"n_nights\":2,\"n_orang\":2,\"minat_wisata\":[\"Alam\",\"Kuliner\"],\"moda\":\"mobil\"}"
+Invoke-RestMethod -Uri http://localhost:8000/api/itinerary -Method Post -ContentType 'application/json' -Body '{"budget_total":5000000,"n_days":3,"n_nights":2,"n_orang":2,"minat_wisata":["Alam","Kuliner"],"moda":"mobil"}'
 ```
 
 ### C. Menjalankan evaluasi model
@@ -230,11 +226,3 @@ Disampaikan secara terbuka; uraian lengkap ada pada Bab 10 [`DOKUMENTASI_MODEL.m
 
 Ide, konsep dasar, dan perumusan masalah sepenuhnya berasal dari tim — mencakup penetapan optimasi berbasis anggaran sebagai pendekatan inti, perumusan kriteria keberpihakan UMKM, dan rancangan alur pengalaman wisatawan. Inti sistem bukan model generatif: seluruh penyusunan itinerary dihasilkan model ILP yang deterministik, dengan angka harga, jarak, dan jam operasional diambil langsung dari dataset panitia. Model `gpt-4o-mini` dipakai terbatas pada AI Search dan penerjemahan di lapisan antarmuka. Dalam pengembangan, tim memakai asisten pemrograman berbasis AI untuk implementasi kode, antarmuka, dan dokumentasi, sementara seluruh arahan teknis, keputusan rancangan, peninjauan, dan pengujian tetap dipegang tim. Dataset tidak dihasilkan AI, dan angka pada laporan evaluasi berasal dari eksekusi nyata terhadap sistem.
 
----
-
-## 📋 Aturan Submission (Wajib Dibaca & Dipatuhi)
-1. **Hak Akses:** Repository harus bersifat **Private**. Peserta **WAJIB** mengundang akun email **aicenter.itdel@gmail.com** sebagai *Collaborator/Viewer* agar juri dapat mengakses kode.
-2. **Kesesuaian Instruksi:** Panitia dan juri akan menjalankan _project_ secara lokal murni berdasarkan instruksi di *Langkah Instalasi* pada README ini. Pastikan langkah tersebut valid dan komplit.
-3. **Keamanan:** Dilarang keras men-_commit_ API key, _credential_, atau file `.env` asli ke repository.
-4. **Kelengkapan Kode:** Sertakan seluruh _source code_ yang relevan. Tidak boleh ada dependensi yang memaksa kode mengambil dari server privat peserta yang tidak bisa diakses panitia.
-5. **Batas Waktu:** Perubahan/commit pada _repository_ setelah batas waktu submisi _Preliminary Round_ ditutup tidak akan dinilai, kecuali untuk penyesuaian akses atas permintaan panitia.
