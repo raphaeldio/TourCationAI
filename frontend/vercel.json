@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://GANTI-NAMA-LAYANAN.onrender.com/api/:path*"
+      "destination": "https://tourcation-api.onrender.com/api/:path*"
     },
     {
       "source": "/(.*)",
