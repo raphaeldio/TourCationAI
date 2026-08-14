@@ -164,6 +164,27 @@ Buka **http://localhost:5173** di peramban.
 
 > Vite meneruskan `/api/*` ke backend di port 8000, jadi tidak ada CORS atau URL yang perlu diatur manual. **Permintaan pertama memerlukan beberapa detik** karena seluruh dataset CSV dimuat sekali ke memori.
 
+### Deploy ke web (opsional — Vercel + Render)
+
+Sistem di-deploy sebagai dua layanan terpisah. Frontend statis di **Vercel**, backend Python di **Render**, dan Vercel meneruskan `/api/*` ke Render lewat aturan *rewrite* — sehingga kode frontend tetap memakai path relatif `/api` tanpa perubahan dan tidak ada persoalan CORS.
+
+**1. Backend di Render.** Repo sudah menyertakan [`render.yaml`](render.yaml). Hubungkan repo lewat menu *Blueprints*, atau isi manual di dashboard:
+
+| Kolom | Nilai |
+| :--- | :--- |
+| Runtime | Python 3 |
+| Build Command | `pip install -r backend/requirements.txt` |
+| Start Command | `uvicorn backend.main:app --host 0.0.0.0 --port $PORT` |
+| Health Check Path | `/api/health` |
+
+Isi `OPENAI_API_KEY` lewat menu **Environment** di dashboard Render — **jangan** pernah ditulis di `render.yaml` atau berkas mana pun dalam repo.
+
+**2. Frontend di Vercel.** Setel *Root Directory* ke `frontend`. Vercel mendeteksi Vite secara otomatis. Buka [`frontend/vercel.json`](frontend/vercel.json), ganti `https://GANTI-NAMA-LAYANAN.onrender.com` dengan URL layanan Render Anda, lalu deploy ulang. Berkas itu juga memuat *SPA fallback* agar rute seperti `/galeri/pulau-samosir` tidak 404 saat halaman di-refresh.
+
+**Pembatasan laju.** Endpoint yang memakai OpenAI dibatasi per alamat IP, dengan pagu harian menyeluruh sebagai jaring terakhir. Nilainya diatur lewat environment variable: `RATE_AI_SEARCH_PER_JAM` (bawaan 15), `RATE_TRANSLATE_PER_JAM` (40), `RATE_TRANSLATE_UI_PER_JAM` (12), dan `RATE_PAGU_HARIAN` (400). Mengisi `0` mematikan fitur bersangkutan. Endpoint penyusun itinerary **tidak** dibatasi karena seluruh komputasinya lokal dan tanpa biaya.
+
+> **Catatan untuk juri.** Layanan gratis Render menidurkan aplikasi setelah 15 menit menganggur, sehingga **akses pertama dapat memakan waktu sekitar 50 detik**. Ini perilaku platform, bukan kegagalan sistem. Bila menemui halaman yang tampak menggantung, tunggu sejenak lalu muat ulang.
+
 ## 9. Cara Menggunakan / Testing (Evaluasi Model)
 
 ### A. Mencoba aplikasi (alur demo yang disarankan)

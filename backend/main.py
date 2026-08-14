@@ -17,9 +17,11 @@ Menjalankan dari root repo:
 import json
 import os
 import sys
+import time
+from collections import defaultdict, deque
 from typing import List, Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -42,6 +44,80 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+# ---------------------------------------------------------------------------
+# Pembatasan laju untuk endpoint berbiaya (yang memanggil OpenAI)
+#
+# Endpoint ILP tidak dibatasi: seluruh komputasinya lokal dan tidak berbiaya.
+# Yang dijaga hanya /api/ai-search, /api/translate, dan /api/translate-ui
+# karena tiap panggilan memakai kuota OpenAI pemilik kunci.
+#
+# Dua lapis: kuota per alamat IP, dan pagu harian menyeluruh sebagai jaring
+# terakhir bila header X-Forwarded-For dipalsukan.
+# ---------------------------------------------------------------------------
+def _env_int(nama: str, bawaan: int) -> int:
+    try:
+        return int(os.getenv(nama, bawaan))
+    except (TypeError, ValueError):
+        return bawaan
+
+
+# Batas per IP dalam satu jam. Diset lewat env agar bisa dilonggarkan saat demo.
+_KUOTA_PER_IP = {
+    "ai-search": _env_int("RATE_AI_SEARCH_PER_JAM", 15),
+    "translate": _env_int("RATE_TRANSLATE_PER_JAM", 40),
+    "translate-ui": _env_int("RATE_TRANSLATE_UI_PER_JAM", 12),
+}
+_JENDELA_DETIK = 3600
+# Pagu seluruh pengguna per 24 jam; 0 berarti tanpa pagu.
+_PAGU_HARIAN = _env_int("RATE_PAGU_HARIAN", 400)
+
+_riwayat: dict[str, deque] = defaultdict(deque)
+_riwayat_global: deque = deque()
+
+
+def _alamat_klien(request: Request) -> str:
+    """IP asli pemanggil. Di belakang proxy (Vercel/Render) alamat soket adalah
+    milik proxy, sehingga entri pertama X-Forwarded-For yang dipakai."""
+    maju = request.headers.get("x-forwarded-for")
+    if maju:
+        return maju.split(",")[0].strip()
+    return request.client.host if request.client else "tak-dikenal"
+
+
+def _batasi(request: Request, nama_endpoint: str) -> None:
+    """Naikkan pencacah; lempar HTTP 429 bila kuota terlampaui."""
+    sekarang = time.time()
+
+    if _PAGU_HARIAN > 0:
+        while _riwayat_global and sekarang - _riwayat_global[0] > 86400:
+            _riwayat_global.popleft()
+        if len(_riwayat_global) >= _PAGU_HARIAN:
+            raise HTTPException(
+                429, "Pagu harian fitur AI pada demo ini sudah tercapai. "
+                     "Seluruh fitur lain (itinerary, rute, peta, biaya, dampak "
+                     "UMKM) tetap berjalan normal.")
+
+    kuota = _KUOTA_PER_IP.get(nama_endpoint, 20)
+    kunci = f"{nama_endpoint}:{_alamat_klien(request)}"
+    antrean = _riwayat[kunci]
+    while antrean and sekarang - antrean[0] > _JENDELA_DETIK:
+        antrean.popleft()
+    if len(antrean) >= kuota:
+        if not antrean:
+            # kuota 0 = fitur sengaja dimatikan lewat environment variable
+            raise HTTPException(
+                429, "Fitur AI dinonaktifkan pada demo ini. Seluruh fitur lain "
+                     "(itinerary, rute, peta, biaya, dampak UMKM) tetap berjalan.")
+        sisa_menit = int((_JENDELA_DETIK - (sekarang - antrean[0])) / 60) + 1
+        raise HTTPException(
+            429, f"Terlalu banyak permintaan. Batas {kuota} per jam untuk fitur "
+                 f"ini. Coba lagi dalam ~{sisa_menit} menit.")
+
+    antrean.append(sekarang)
+    if _PAGU_HARIAN > 0:
+        _riwayat_global.append(sekarang)
 
 
 # ---------------------------------------------------------------------------
@@ -440,8 +516,9 @@ def languages():
 
 
 @app.post("/api/translate")
-def translate(req: TranslateReq):
+def translate(req: TranslateReq, request: Request):
     """Terjemahkan satu teks bebas. Model diminta membalas terjemahan saja."""
+    _batasi(request, "translate")
     from dotenv import load_dotenv
     load_dotenv(os.path.join(_ROOT, ".env"), override=True)
     api_key = os.getenv("OPENAI_API_KEY")
@@ -496,12 +573,13 @@ def translate(req: TranslateReq):
 
 
 @app.post("/api/translate-ui")
-def translate_ui(req: TranslateUIReq):
+def translate_ui(req: TranslateUIReq, request: Request):
     """Terjemahkan label antarmuka; balikan kamus {teks asli: terjemahan}.
 
     Hanya label statis yang dikirim — angka, harga, koordinat, dan nama tempat
     tidak pernah melewati model.
     """
+    _batasi(request, "translate-ui")
     from dotenv import load_dotenv
     load_dotenv(os.path.join(_ROOT, ".env"), override=True)
     api_key = os.getenv("OPENAI_API_KEY")
@@ -602,12 +680,13 @@ def buat_itinerary(req: ItineraryReq):
 
 
 @app.post("/api/ai-search")
-def ai_search(req: AISearchReq):
+def ai_search(req: AISearchReq, request: Request):
     """Tanya-jawab seputar Danau Toba, dibumikan pada itinerary aktif.
 
     Angka konkret (harga, jam, jarak) hanya boleh dikutip dari konteks yang
     disuntikkan; pengetahuan umum model wajib ditandai bukan dari dataset.
     """
+    _batasi(request, "ai-search")
     from dotenv import load_dotenv
     load_dotenv(os.path.join(_ROOT, ".env"), override=True)
     api_key = os.getenv("OPENAI_API_KEY")

@@ -1,0 +1,37 @@
+# Konfigurasi layanan backend di Render (https://render.com).
+#
+# Render membaca berkas ini saat repo dihubungkan lewat menu "Blueprints".
+# Bisa juga diabaikan dan seluruh nilainya diisi manual di dashboard.
+#
+# Frontend TIDAK di-deploy di sini — frontend berada di Vercel dan meneruskan
+# /api/* ke layanan ini lewat aturan rewrite pada frontend/vercel.json.
+services:
+  - type: web
+    name: tourcation-api
+    runtime: python
+    plan: free
+    region: singapore              # terdekat dari Indonesia
+    branch: main
+    buildCommand: pip install -r backend/requirements.txt
+    # $PORT wajib dipakai; Render menentukan portnya sendiri.
+    # Dijalankan dari root repo agar engine.DATA_DIR ("data") tetap ketemu.
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      # sync: false = nilainya TIDAK disimpan di repo. Isi manual sekali di
+      # dashboard Render (Environment -> Add Environment Variable).
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL_NAME
+        value: gpt-4o-mini
+      # Pembatasan laju fitur AI. Longgarkan bila perlu saat sesi penjurian.
+      - key: RATE_AI_SEARCH_PER_JAM
+        value: "15"
+      - key: RATE_TRANSLATE_PER_JAM
+        value: "40"
+      - key: RATE_TRANSLATE_UI_PER_JAM
+        value: "12"
+      - key: RATE_PAGU_HARIAN
+        value: "400"
