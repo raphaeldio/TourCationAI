@@ -4,6 +4,66 @@ import type { DampakLokal, Itinerary } from "./types";
 export const slotKey = (day: number, slot: string) => `${day}-${slot}`;
 
 /**
+ * Selisih biaya makan terhadap opsi ke-0 yang dipakai solver, atas seluruh slot.
+ *
+ * Ditaruh di sini — bukan sebagai `useMemo` lokal di ItineraryBoard — karena
+ * ADA DUA pembaca yang harus setuju: papan itinerary di layar dan ekspor PDF.
+ * Sebelumnya hanya papan yang menghitungnya, sedangkan PDF memakai
+ * `summary.total_estimasi` mentah dari server. Akibatnya begitu turis menukar
+ * satu rumah makan, PDF mencetak biaya yang berbeda dari yang baru saja ia
+ * lihat di layar — dan tidak ada di antara keduanya yang menandai selisihnya.
+ */
+export function hitungDeltaMakan(
+  itinerary: Itinerary | null,
+  pick: Record<string, number>,
+): number {
+  if (!itinerary) return 0;
+  let d = 0;
+  for (const day of itinerary.days) {
+    for (const a of day.agenda) {
+      if (a.kind !== "makan" || !a.options.length) continue;
+      const sel = pick[slotKey(day.day, a.slot)] ?? 0;
+      if (sel === 0) continue;
+      d += (a.options[sel]?.price_group ?? 0) - (a.options[0]?.price_group ?? 0);
+    }
+  }
+  return d;
+}
+
+/**
+ * Biaya yang benar-benar ditampilkan, sesudah pilihan makan turis.
+ *
+ * Satu tempat menghitung keempat turunan biaya, supaya "Per Hari" dan
+ * "per orang" tidak bisa lagi memakai penyebut yang berbeda tanpa disadari.
+ * Perhatikan `per_orang_per_hari`: itu penyebut GABUNGAN (hari x orang), dan
+ * itulah satu-satunya angka yang sah dipakai sebagai keterangan di bawah
+ * sebuah nilai harian. `per_orang` adalah biaya satu orang untuk SELURUH
+ * perjalanan — bukan per hari — dan mencampur keduanya membuat keterangannya
+ * bisa lebih besar daripada nilai yang diterangkan.
+ */
+export function hitungBiaya(itinerary: Itinerary, pick: Record<string, number>) {
+  const s = itinerary.summary;
+  const delta = hitungDeltaMakan(itinerary, pick);
+  const total = s.total_estimasi + delta;
+  const hari = Math.max(s.n_days, 1);
+  const orang = Math.max(s.n_orang, 1);
+
+  return {
+    delta,
+    total,
+    sisa: s.budget_total - total,
+    persen: s.budget_total ? Math.round((total / s.budget_total) * 1000) / 10 : 0,
+    lewat: s.budget_total - total < 0,
+    /** Seluruh rombongan, satu hari. */
+    per_hari: Math.round(total / hari),
+    /** Satu orang, seluruh perjalanan. */
+    per_orang: Math.round(total / orang),
+    /** Satu orang, satu hari. */
+    per_orang_per_hari: Math.round(total / (hari * orang)),
+  };
+}
+
+/**
  * Hitung ulang dampak UMKM dari tempat makan yang benar-benar dipilih turis.
  *
  * Menyalin `analisis_dampak_lokal()` di engine memakai sinyal `umkm` yang ikut

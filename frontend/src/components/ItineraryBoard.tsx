@@ -23,15 +23,20 @@ import {
   Banknote,
   ChevronDown,
   FileDown,
+  BookmarkPlus,
+  BookmarkCheck,
+  Lock,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import type {
   AgendaItem, DayPlan, GrupFasilitas, HotelKandidat, Itinerary,
 } from "../types";
 import { rp } from "../api";
-import { slotKey } from "../dampak";
+import { hitungBiaya, slotKey } from "../dampak";
 import { cn } from "../lib/utils";
 import { useT } from "../i18n";
 import { EmptyArt, VectorThumb } from "../vectors";
+import PenilaianTempat from "./PenilaianTempat";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
@@ -52,8 +57,21 @@ interface Props {
   setPick: (f: (p: Record<string, number>) => Record<string, number>) => void;
   /** Ganti penginapan; menyusun ULANG rencana karena hotel adalah acuan jarak. */
   onPilihHotel?: (nama: string) => void;
-  /** Unduh rencana sebagai PDF. */
+  /**
+   * Unduh rencana sebagai PDF. Hanya diteruskan App bila pemanggil sudah punya
+   * akun — lihat `punyaAkun`.
+   */
   onExport?: () => void;
+  /** Simpan rencana ke inbox; null bila rencana ini tidak punya id. */
+  onSimpan?: () => void;
+  /**
+   * Sudah masuk atau belum. Menentukan apakah Simpan dan Ekspor PDF berupa
+   * tombol atau berupa ajakan masuk — bukan disembunyikan. Tombol yang hilang
+   * tanpa penjelasan terbaca sebagai fitur yang rusak.
+   */
+  punyaAkun?: boolean;
+  /** "menyimpan" | "tersimpan" | null — keadaan tombol Simpan. */
+  statusSimpan?: "menyimpan" | "tersimpan" | null;
 }
 
 const TEMA: Record<string, string> = {
@@ -346,6 +364,9 @@ export default function ItineraryBoard({
   setPick,
   onPilihHotel,
   onExport,
+  onSimpan,
+  punyaAkun = false,
+  statusSimpan = null,
 }: Props) {
   // Hari yang sedang dibuka lewat tombol berjajar.
   const [activeDay, setActiveDay] = useState(1);
@@ -358,20 +379,15 @@ export default function ItineraryBoard({
     setActiveDay(1);
   }, [itinerary]);
 
-  /** Selisih biaya terhadap opsi ke-0 yang dipakai solver, atas seluruh slot. */
-  const deltaMakan = useMemo(() => {
-    if (!itinerary) return 0;
-    let d = 0;
-    for (const day of itinerary.days) {
-      for (const a of day.agenda) {
-        if (a.kind !== "makan" || !a.options.length) continue;
-        const sel = pick[slotKey(day.day, a.slot)] ?? 0;
-        if (sel === 0) continue;
-        d += (a.options[sel]?.price_group ?? 0) - (a.options[0]?.price_group ?? 0);
-      }
-    }
-    return d;
-  }, [itinerary, pick]);
+  /**
+   * Seluruh turunan biaya dalam satu panggilan. Dihitung di `dampak.ts` supaya
+   * papan ini dan ekspor PDF memakai angka yang sama persis.
+   */
+  const biaya = useMemo(
+    () => (itinerary ? hitungBiaya(itinerary, pick) : null),
+    [itinerary, pick],
+  );
+  const deltaMakan = biaya?.delta ?? 0;
 
   if (planning && !itinerary) {
     return (
@@ -418,18 +434,17 @@ export default function ItineraryBoard({
   const nDest = itinerary.days.reduce((acc, d) => acc + d.n_wisata, 0);
 
   // Angka mengikuti pilihan makan pengguna, bukan rekomendasi awal solver.
-  const totalEstimasi = s.total_estimasi + deltaMakan;
-  const sisaEstimasi = s.budget_total - totalEstimasi;
-  const persenTerpakai = s.budget_total
-    ? Math.round((totalEstimasi / s.budget_total) * 1000) / 10
-    : 0;
-  const perHari = Math.round(totalEstimasi / Math.max(s.n_days, 1));
-  const perOrang = Math.round(totalEstimasi / Math.max(s.n_orang, 1));
-  const lewatBudget = sisaEstimasi < 0;
+  // `biaya` sudah dihitung di atas; non-null di sini karena `itinerary` ada.
+  const b = biaya!;
+  const totalEstimasi = b.total;
+  const sisaEstimasi = b.sisa;
+  const persenTerpakai = b.persen;
+  const lewatBudget = b.lewat;
 
   const dayAktif =
     itinerary.days.find((d) => d.day === activeDay) ?? itinerary.days[0];
   const acuan = itinerary.titik_acuan;
+  const tertaut = itinerary.usaha_tertaut ?? {};
 
   const renderItem = (a: AgendaItem, day: number, i: number) => {
     if (a.kind === "wisata") {
@@ -486,6 +501,10 @@ export default function ItineraryBoard({
     }
     const key = slotKey(day, a.slot);
     const sel = pick[key] ?? 0;
+    // Tempat makan yang sedang dipilih, bila pemiliknya sudah mengklaimnya di
+    // TourCation. Peta ini ditempel backend lewat `place_name_norm` dan hanya
+    // berisi usaha yang benar-benar bisa menerima penilaian.
+    const usahaTerpilih = tertaut[a.options[sel]?.name ?? ""];
     return (
       <motion.div
         className="icard spotlight card-glow group flex gap-3.5 rounded-2xl border border-ink/10 bg-ink/[0.03] p-3.5 hover:-translate-y-0.5"
@@ -540,14 +559,25 @@ export default function ItineraryBoard({
                       {rp(Math.abs(dv))}
                     </span>
                   )}
-                  <span className="shrink-0 text-ink-faint">
+                  {/* Angka ini ESTIMASI KISARAN dari dataset kawasan, bukan harga
+                      menu. Harga menu sungguhan — yang ditulis pemiliknya dan
+                      dinilai komunitas — muncul di panel usaha di bawah daftar
+                      ini. Keduanya sengaja tidak pernah digabung; lihat
+                      `services/solver_state.py`. Awalan "est." yang membedakan
+                      keduanya di layar, jadi jangan dihapus saat merapikan. */}
+                  <span
+                    className="shrink-0 text-ink-faint"
+                    title={t("Estimasi kisaran dari dataset kawasan, bukan harga menu")}
+                  >
                     <Star className="mr-0.5 inline h-3 w-3 fill-amber-400 text-amber-600" />
-                    {o.rating ?? "–"} · {rp(o.price_group)}
+                    {o.rating ?? "–"} · {t("est.")} {rp(o.price_group)}
                   </span>
                 </button>
               );
             })}
           </div>
+
+          {usahaTerpilih && <PenilaianTempat usaha={usahaTerpilih} />}
         </div>
       </motion.div>
     );
@@ -563,18 +593,58 @@ export default function ItineraryBoard({
           </div>
 
           {/* Rencana sudah jadi dan terpampang di bawah — di sinilah turis
-              berada saat ingin menyimpannya. */}
-          {onExport && (
-            <Button
-              size="sm"
-              onClick={onExport}
-              title={t("Unduh rencana sebagai PDF")}
-              className="shrink-0"
-            >
-              <FileDown className="h-4 w-4" />
-              {t("Ekspor PDF")}
-            </Button>
-          )}
+              berada saat ingin menyimpan atau mengunduhnya.
+
+              Bagi yang belum masuk, keduanya tidak disembunyikan melainkan
+              diganti satu ajakan masuk yang menyebut apa yang didapat. Tombol
+              yang hilang tanpa penjelasan terbaca sebagai fitur yang rusak;
+              tombol mati tanpa alasan terbaca sebagai bug. */}
+          <div className="flex shrink-0 flex-wrap items-center gap-2">
+            {punyaAkun ? (
+              <>
+                {onSimpan && (
+                  <Button
+                    size="sm"
+                    variant={statusSimpan === "tersimpan" ? "outline" : "default"}
+                    onClick={onSimpan}
+                    disabled={statusSimpan === "menyimpan"}
+                    title={t("Simpan rencana ke Perjalanan Saya")}
+                  >
+                    {statusSimpan === "tersimpan" ? (
+                      <BookmarkCheck className="h-4 w-4" />
+                    ) : (
+                      <BookmarkPlus className="h-4 w-4" />
+                    )}
+                    {statusSimpan === "menyimpan"
+                      ? t("Menyimpan…")
+                      : statusSimpan === "tersimpan"
+                        ? t("Tersimpan")
+                        : t("Simpan Perjalanan")}
+                  </Button>
+                )}
+                {onExport && (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={onExport}
+                    title={t("Unduh rencana sebagai PDF")}
+                  >
+                    <FileDown className="h-4 w-4" />
+                    {t("Ekspor PDF")}
+                  </Button>
+                )}
+              </>
+            ) : (
+              <Link
+                to="/masuk"
+                className="sentuh flex items-center gap-2 rounded-xl border border-ink/15 bg-white px-3 py-2 text-xs font-bold text-ink no-underline transition-colors hover:bg-ink/5"
+                title={t("Masuk untuk menyimpan rencana dan mengunduh PDF")}
+              >
+                <Lock className="h-3.5 w-3.5" aria-hidden />
+                {t("Masuk untuk simpan & ekspor PDF")}
+              </Link>
+            )}
+          </div>
         </div>
 
         <h1 className="font-display text-3xl font-extrabold tracking-tight text-ink">
@@ -612,7 +682,19 @@ export default function ItineraryBoard({
             d: lewatBudget ? t("melebihi budget") : `${t("dari budget")} ${rp(s.budget_total)}`,
           },
           { icon: Route, k: t("Total Jarak"), n: totalKm, fmt: (x: number) => `${x} km`, d: `${nDest} ${t("destinasi")}` },
-          { icon: Wallet, k: t("Per Hari"), n: perHari, fmt: rp, d: `${rp(perOrang)} / ${t("per orang")}` },
+          {
+            icon: Wallet,
+            k: t("Per Hari"),
+            n: b.per_hari,
+            fmt: rp,
+            // Keterangan di bawah nilai HARIAN wajib memakai penyebut harian.
+            // Sebelumnya di sini tertulis `per_orang` — biaya satu orang untuk
+            // SELURUH perjalanan — sehingga pada 3 hari / 2 orang keterangannya
+            // (Rp 2,5 jt) justru lebih besar daripada nilai yang diterangkan
+            // (Rp 1,67 jt). Dua penyebut berbeda disajikan seolah yang satu
+            // memperjelas yang lain.
+            d: `${rp(b.per_orang_per_hari)} / ${t("orang / hari")}`,
+          },
         ].map(({ icon: Icon, k, n, fmt, d }, i) => (
           <motion.div
             key={k}

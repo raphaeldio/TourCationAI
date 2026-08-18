@@ -1,3 +1,5 @@
+import type { RekomendasiLainnya, UsahaTertaut } from "./typesKomunitas";
+
 /** Rincian keberpihakan UMKM satu tempat makan. */
 export interface SinyalUmkm {
   /** 0.0 – 1.0 dari tiga sinyal berbobot. */
@@ -202,6 +204,15 @@ export interface HotelKandidat {
 export interface Itinerary {
   status: string;
   message?: string;
+  /**
+   * Id baris `itinerary_log` rencana ini — sasaran tombol Simpan.
+   *
+   * Hanya terisi ketika permintaannya dibuat oleh akun yang sudah masuk: untuk
+   * pemanggil anonim, pencatatan berjalan di latar belakang dan id-nya memang
+   * tidak pernah sampai ke klien. `null` juga mungkin bila pencatatannya gagal,
+   * dan itu bukan kegagalan rencana — cukup tombol Simpan yang tidak aktif.
+   */
+  itinerary_id?: string | null;
   summary: Summary;
   /** null saat penginapan tidak diikutkan — pakai `titik_acuan` sebagai gantinya. */
   hotel: Hotel | null;
@@ -215,6 +226,18 @@ export interface Itinerary {
   landmarks: Place[];
   analisis?: Analisis;
   dampak_lokal?: DampakLokal;
+  /**
+   * Slot pemerataan untuk UMKM berkembang. Ditempel backend SETELAH payload
+   * final, jadi keberadaannya tidak pernah mengubah `summary`, `days`, maupun
+   * `total_jarak_km`.
+   */
+  rekomendasi_lainnya?: RekomendasiLainnya | null;
+  /**
+   * Nama tempat makan pada rencana -> akun UMKM yang mengklaimnya, ditautkan
+   * lewat `place_name_norm`. Hanya berisi yang memang sudah diklaim; sisanya
+   * tetap tempat dari CSV tanpa pemilik dan tidak bisa dinilai.
+   */
+  usaha_tertaut?: Record<string, UsahaTertaut>;
 }
 
 export interface MinatOption {

@@ -7,14 +7,18 @@ import type {
   ProfilOption,
 } from "./types";
 import { fetchMeta, planItinerary } from "./api";
+import { simpanPerjalanan } from "./apiPerjalanan";
+import { useAuth } from "./auth";
 import { exportItineraryPdf } from "./exportPdf";
 import { hitungDampak } from "./dampak";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import AiAnalysis from "./components/AiAnalysis";
 import ItineraryBoard from "./components/ItineraryBoard";
+import RekomendasiLainnya from "./components/RekomendasiLainnya";
 import SidePanel from "./components/SidePanel";
 import UmkmImpact from "./components/UmkmImpact";
+import IntelligenceSection from "./components/IntelligenceSection";
 import TranslatorBot from "./components/TranslatorBot";
 
 const DEFAULT_FORM: PlanForm = {
@@ -34,6 +38,7 @@ const DEFAULT_FORM: PlanForm = {
 };
 
 export default function App() {
+  const { sesi } = useAuth();
   const [minat, setMinat] = useState<MinatOption[]>([]);
   const [profil, setProfil] = useState<ProfilOption[]>([]);
   const [gayaJelajah, setGayaJelajah] = useState<GayaJelajahOption[]>([]);
@@ -46,9 +51,13 @@ export default function App() {
   // Pilihan tempat makan per slot. Diangkat ke App karena section Dampak UMKM,
   // analisis AI, dan ekspor PDF sama-sama bergantung padanya.
   const [pick, setPick] = useState<Record<string, number>>({});
+  const [statusSimpan, setStatusSimpan] = useState<"menyimpan" | "tersimpan" | null>(null);
 
   useEffect(() => {
     setPick({});
+    // Rencana baru berarti simpanan sebelumnya tidak lagi relevan; tanpa reset,
+    // tombolnya tetap berbunyi "Tersimpan" untuk rencana yang belum disimpan.
+    setStatusSimpan(null);
   }, [itinerary]);
 
   // Dampak UMKM mengikuti pilihan turis, bukan rekomendasi awal server.
@@ -124,7 +133,26 @@ export default function App() {
 
   const exportTrip = () => {
     if (!itinerary) return;
-    exportItineraryPdf(itinerary, dampak);
+    // `pick` diteruskan supaya biaya di PDF sama dengan yang tampil di layar.
+    exportItineraryPdf(itinerary, dampak, pick);
+  };
+
+  /**
+   * Simpan rencana ke inbox. Yang dikirim adalah payload yang SEDANG DILIHAT,
+   * termasuk `pick` — pilihan rumah makan turis ikut tersimpan supaya rencana
+   * yang dibuka kembali sama dengan yang ia tutup, bukan rekomendasi awal
+   * server.
+   */
+  const simpanTrip = async () => {
+    if (!itinerary?.itinerary_id) return;
+    setStatusSimpan("menyimpan");
+    try {
+      await simpanPerjalanan(itinerary.itinerary_id, { ...itinerary, pick });
+      setStatusSimpan("tersimpan");
+    } catch (e) {
+      setStatusSimpan(null);
+      setError((e as Error).message);
+    }
   };
 
   // Kartu analisis mengirim pertanyaan ke kotak AI di hero, lalu menggulir ke sana.
@@ -158,7 +186,13 @@ export default function App() {
             pick={pick}
             setPick={setPick}
             onPilihHotel={pilihHotel}
-            onExport={exportTrip}
+            // Ekspor PDF digerbangi akun. Fungsinya tidak diteruskan sama sekali
+            // bagi pemanggil anonim — kalau hanya tombolnya yang disembunyikan,
+            // jalur ekspornya tetap hidup di dalam komponen.
+            onExport={sesi ? exportTrip : undefined}
+            onSimpan={itinerary?.itinerary_id ? () => void simpanTrip() : undefined}
+            punyaAkun={Boolean(sesi)}
+            statusSimpan={statusSimpan}
           />
           <SidePanel
             minat={minat}
@@ -173,9 +207,16 @@ export default function App() {
           />
         </div>
 
+        {/* Sengaja SAUDARA ItineraryBoard, bukan di dalamnya: blok ini juga
+            ditempel setelah payload final di backend, dan tidak memengaruhi
+            satu angka pun pada rencana di atas. */}
+        <RekomendasiLainnya blok={itinerary?.rekomendasi_lainnya} />
+
         <AiAnalysis itinerary={itinerary} onTanya={tanyaAI} dampak={dampak} />
 
         <UmkmImpact dampak={dampak} />
+
+        <IntelligenceSection />
 
         <footer className="glass footer mt-10 flex items-center justify-between rounded-2xl px-5 py-4 text-xs text-ink-faint">
           <span>© 2026 TourCation AI · Danau Toba AI Tourism</span>

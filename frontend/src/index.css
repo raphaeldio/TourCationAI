@@ -424,3 +424,44 @@ a.btn-plan.drive {
   transform: translateY(-1px);
   box-shadow: 0 6px 14px -8px hsl(var(--brand-forest) / 0.5);
 }
+
+/* ══════════════════════════════════════════════════════════════
+   DISIPLIN ANIMASI — berlaku untuk seluruh permukaan dashboard
+   ══════════════════════════════════════════════════════════════
+   Aturan yang dipegang di area dashboard:
+     · durasi 150-400 ms; 600 ms hanya untuk angka yang menghitung naik
+     · sekali jalan saat masuk viewport, TIDAK berulang
+     · gerak <= 16 px, opacity 0->1; tanpa rotasi, tanpa parallax
+     · easing sama dengan yang sudah dipakai fade-up/rise
+   Alasannya bukan sekadar selera: dashboard pemerintah dengan latar
+   yang terus bergerak justru menurunkan kredibilitas angkanya, dan
+   loop animasi tanpa henti menguras baterai di perangkat mobile —
+   yang merupakan target utama tata letak ini. */
+.dash {
+  --ease-halus: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Bilah gulir tipis untuk tabel yang menggulir mendatar di layar kecil. */
+.gulir-x {
+  @apply overflow-x-auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Sasaran sentuh minimum 44px — syarat kenyamanan di layar sentuh. */
+.sentuh {
+  @apply min-h-[44px] min-w-[44px];
+}
+
+/* Hormati preferensi sistem untuk mengurangi gerak. Ini aksesibilitas,
+   bukan opsi: sebagian orang mengalami pusing/mual karena animasi. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

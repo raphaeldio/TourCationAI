@@ -6,3 +6,5 @@ pulp
 requests
 openai
 python-dotenv
+PyJWT[crypto]
+httpx

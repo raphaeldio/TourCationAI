@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Globe, Loader2 } from "lucide-react";
 import { BrandLogo } from "../vectors";
+import MenuAkun from "./MenuAkun";
 import { Button } from "./ui/button";
 import { cn } from "../lib/utils";
 import { useI18n } from "../i18n";
@@ -16,6 +17,7 @@ const LINKS = [
   { id: "planner", label: "Perjalanan" },
   { id: "ai", label: "AI Guide" },
   { id: "umkm", label: "Dampak UMKM" },
+  { id: "intelligence", label: "Dashboard" },
 ] as const;
 
 export default function Navbar({ onPlanTrip }: Props) {
@@ -149,6 +151,12 @@ export default function Navbar({ onPlanTrip }: Props) {
             )}
           </select>
         </div>
+
+        {/* Masuk / akun. Menunya ditulis sendiri, BUKAN memakai pustaka: satu
+            dropdown Radix menambah ~32 KB gz ke halaman depan — halaman yang
+            pertama dibuka setiap pengunjung, termasuk yang belum punya akun dan
+            tidak akan pernah membukanya. Lihat MenuAkun.tsx. */}
+        <MenuAkun scrolled={scrolled} />
 
         {/* Tombol ekspor PDF pindah ke kepala kartu itinerary: di sanalah
             perhatian turis berada begitu rencananya selesai disusun. */}

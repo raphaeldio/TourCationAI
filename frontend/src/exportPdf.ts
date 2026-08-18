@@ -1,6 +1,7 @@
 import { jsPDF } from "jspdf";
 import type { Itinerary, DampakLokal } from "./types";
 import { rp } from "./api";
+import { hitungBiaya } from "./dampak";
 
 // Palet senada UI. jsPDF hanya bisa warna solid, jadi gradient hero ditiru
 // dengan beberapa pita tipis dari biru ke violet.
@@ -88,9 +89,20 @@ function footers(doc: jsPDF) {
  *   angka bawaan dari server — yang hanya benar selama turis belum menukar
  *   satu pun tempat makan.
  */
-export function exportItineraryPdf(itinerary: Itinerary, dampak?: DampakLokal) {
+/**
+ * @param pick Pilihan rumah makan turis. WAJIB diteruskan bila ada, karena
+ *   biaya di PDF harus sama dengan yang tampil di layar. Tanpa ini, PDF
+ *   mencetak `summary.total_estimasi` mentah dari server dan setiap penukaran
+ *   rumah makan membuat kedua angka berbeda tanpa penjelasan.
+ */
+export function exportItineraryPdf(
+  itinerary: Itinerary,
+  dampak?: DampakLokal,
+  pick: Record<string, number> = {},
+) {
   const doc = new jsPDF({ unit: "mm", format: "a4" });
   const s = itinerary.summary;
+  const b = hitungBiaya(itinerary, pick);
   let y = header(doc);
 
   // Halaman baru bila sisa ruang tidak cukup untuk blok berikutnya.
@@ -104,8 +116,30 @@ export function exportItineraryPdf(itinerary: Itinerary, dampak?: DampakLokal) {
   y = sectionTitle(doc, "Ringkasan", y);
   doc.setTextColor(...INK);
   y = line(doc, `${s.n_days} hari / ${s.n_nights} malam - ${s.n_orang} orang - Profil ${s.profil}`, M, y);
-  y = line(doc, `Budget: ${rp(s.budget_total)} | Estimasi: ${rp(s.total_estimasi)} (${s.persen_terpakai}%)`, M, y);
-  y = line(doc, `Sisa: ${rp(s.sisa_estimasi)} | Per hari: ${rp(s.per_hari)} | Per orang: ${rp(s.per_orang)}`, M, y);
+  y = line(doc, `Budget: ${rp(s.budget_total)} | Estimasi: ${rp(b.total)} (${b.persen}%)`, M, y);
+  // Penyebut setiap angka disebut eksplisit. "Per hari" dan "per orang" memakai
+  // penyebut yang BERBEDA (hari vs orang), jadi tanpa keterangan keduanya mudah
+  // dibaca sebagai satu besaran yang sama — dan pada rombongan lebih dari satu
+  // orang, angka per-orang selalu tampak bertentangan dengan angka per-hari.
+  y = line(doc, `Sisa: ${rp(b.sisa)}`, M, y);
+  y = line(
+    doc,
+    `Per hari (semua orang): ${rp(b.per_hari)} | Per orang (seluruh perjalanan): ` +
+      `${rp(b.per_orang)} | Per orang per hari: ${rp(b.per_orang_per_hari)}`,
+    M,
+    y,
+  );
+  if (b.delta !== 0) {
+    // Tanpa baris ini, PDF dan layar bisa menampilkan total berbeda tanpa
+    // penjelasan apa pun bagi pembaca yang menerima berkasnya.
+    y = line(
+      doc,
+      `Termasuk penukaran rumah makan: ${b.delta > 0 ? "+" : "-"}${rp(Math.abs(b.delta))} ` +
+        `dari rekomendasi awal.`,
+      M,
+      y,
+    );
+  }
   y += 5;
 
   // Tanpa penginapan, yang dicetak adalah titik keberangkatan.

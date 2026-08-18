@@ -35,3 +35,19 @@ services:
         value: "12"
       - key: RATE_PAGU_HARIAN
         value: "400"
+      # --- Supabase: autentikasi & basis data ---------------------------
+      # Tanpa nilai ini layanan tetap hidup; hanya endpoint berperan yang
+      # membalas 401/503. Endpoint publik tidak terpengaruh.
+      - key: SUPABASE_URL
+        value: https://siqdhypesrprbrztucxw.supabase.co
+      # RAHASIA — melewati seluruh Row Level Security. Isi manual di
+      # dashboard Render, jangan pernah dituliskan di repo.
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_JWT_ALG
+        value: RS256
+      # Daftar email pemberi peran awal; isi manual saat dibutuhkan.
+      - key: ADMIN_EMAILS
+        sync: false
+      - key: GOV_DEMO_EMAILS
+        sync: false

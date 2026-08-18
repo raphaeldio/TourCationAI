@@ -1,0 +1,33 @@
+// vite.config.js
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import react from "file:///D:/hackathondel/frontend/node_modules/@vitejs/plugin-react/dist/index.js";
+import { defineConfig } from "file:///D:/hackathondel/frontend/node_modules/vite/dist/node/index.js";
+var __vite_injected_original_import_meta_url = "file:///D:/hackathondel/frontend/vite.config.js";
+var akar = path.dirname(fileURLToPath(__vite_injected_original_import_meta_url));
+var vite_config_default = defineConfig({
+  plugins: [react()],
+  // Alias "@/" dipakai berkas baru (termasuk komponen dari shadcn & ReactBits).
+  // Import relatif yang sudah ada tetap berfungsi — keduanya bisa berdampingan,
+  // jadi tidak ada migrasi massal yang perlu dilakukan.
+  resolve: {
+    alias: { "@": path.resolve(akar, "src") }
+  },
+  server: {
+    port: 5173,
+    proxy: {
+      "/api": "http://localhost:8000"
+    }
+  }
+  // CATATAN: jangan tambahkan manualChunks untuk recharts.
+  //
+  // Menaruhnya di chunk bernama justru membuat Rollup menjadikannya dependensi
+  // STATIS dari entry, sehingga index.html ikut mem-preload-nya dan halaman "/"
+  // menanggung ~156 KB gz yang seharusnya hanya dimuat saat dashboard dibuka.
+  // Pemisahan otomatis Vite sudah menghormati batas dynamic import pada
+  // React.lazy — biarkan ia bekerja sendiri.
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcuanMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCJEOlxcXFxoYWNrYXRob25kZWxcXFxcZnJvbnRlbmRcIjtjb25zdCBfX3ZpdGVfaW5qZWN0ZWRfb3JpZ2luYWxfZmlsZW5hbWUgPSBcIkQ6XFxcXGhhY2thdGhvbmRlbFxcXFxmcm9udGVuZFxcXFx2aXRlLmNvbmZpZy5qc1wiO2NvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9pbXBvcnRfbWV0YV91cmwgPSBcImZpbGU6Ly8vRDovaGFja2F0aG9uZGVsL2Zyb250ZW5kL3ZpdGUuY29uZmlnLmpzXCI7aW1wb3J0IHBhdGggZnJvbSBcIm5vZGU6cGF0aFwiO1xuaW1wb3J0IHsgZmlsZVVSTFRvUGF0aCB9IGZyb20gXCJub2RlOnVybFwiO1xuaW1wb3J0IHJlYWN0IGZyb20gXCJAdml0ZWpzL3BsdWdpbi1yZWFjdFwiO1xuaW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSBcInZpdGVcIjtcbnZhciBha2FyID0gcGF0aC5kaXJuYW1lKGZpbGVVUkxUb1BhdGgoaW1wb3J0Lm1ldGEudXJsKSk7XG4vLyBGcm9udGVuZCBtZW1hbmdnaWwgYmFja2VuZCBGYXN0QVBJIGRpIDo4MDAwLiBQcm94eSAvYXBpIHN1cGF5YSBkaSBkZXYgdGlkYWtcbi8vIHBlcmx1IHVydXMgQ09SUyBkYW4gVVJMIGJpc2EgcmVsYXRpZiAoXCIvYXBpLy4uLlwiKS5cbmV4cG9ydCBkZWZhdWx0IGRlZmluZUNvbmZpZyh7XG4gICAgcGx1Z2luczogW3JlYWN0KCldLFxuICAgIC8vIEFsaWFzIFwiQC9cIiBkaXBha2FpIGJlcmthcyBiYXJ1ICh0ZXJtYXN1ayBrb21wb25lbiBkYXJpIHNoYWRjbiAmIFJlYWN0Qml0cykuXG4gICAgLy8gSW1wb3J0IHJlbGF0aWYgeWFuZyBzdWRhaCBhZGEgdGV0YXAgYmVyZnVuZ3NpIFx1MjAxNCBrZWR1YW55YSBiaXNhIGJlcmRhbXBpbmdhbixcbiAgICAvLyBqYWRpIHRpZGFrIGFkYSBtaWdyYXNpIG1hc3NhbCB5YW5nIHBlcmx1IGRpbGFrdWthbi5cbiAgICByZXNvbHZlOiB7XG4gICAgICAgIGFsaWFzOiB7IFwiQFwiOiBwYXRoLnJlc29sdmUoYWthciwgXCJzcmNcIikgfSxcbiAgICB9LFxuICAgIHNlcnZlcjoge1xuICAgICAgICBwb3J0OiA1MTczLFxuICAgICAgICBwcm94eToge1xuICAgICAgICAgICAgXCIvYXBpXCI6IFwiaHR0cDovL2xvY2FsaG9zdDo4MDAwXCIsXG4gICAgICAgIH0sXG4gICAgfSxcbiAgICAvLyBDQVRBVEFOOiBqYW5nYW4gdGFtYmFoa2FuIG1hbnVhbENodW5rcyB1bnR1ayByZWNoYXJ0cy5cbiAgICAvL1xuICAgIC8vIE1lbmFydWhueWEgZGkgY2h1bmsgYmVybmFtYSBqdXN0cnUgbWVtYnVhdCBSb2xsdXAgbWVuamFkaWthbm55YSBkZXBlbmRlbnNpXG4gICAgLy8gU1RBVElTIGRhcmkgZW50cnksIHNlaGluZ2dhIGluZGV4Lmh0bWwgaWt1dCBtZW0tcHJlbG9hZC1ueWEgZGFuIGhhbGFtYW4gXCIvXCJcbiAgICAvLyBtZW5hbmdndW5nIH4xNTYgS0IgZ3ogeWFuZyBzZWhhcnVzbnlhIGhhbnlhIGRpbXVhdCBzYWF0IGRhc2hib2FyZCBkaWJ1a2EuXG4gICAgLy8gUGVtaXNhaGFuIG90b21hdGlzIFZpdGUgc3VkYWggbWVuZ2hvcm1hdGkgYmF0YXMgZHluYW1pYyBpbXBvcnQgcGFkYVxuICAgIC8vIFJlYWN0LmxhenkgXHUyMDE0IGJpYXJrYW4gaWEgYmVrZXJqYSBzZW5kaXJpLlxufSk7XG4iXSwKICAibWFwcGluZ3MiOiAiO0FBQWdRLE9BQU8sVUFBVTtBQUNqUixTQUFTLHFCQUFxQjtBQUM5QixPQUFPLFdBQVc7QUFDbEIsU0FBUyxvQkFBb0I7QUFIZ0ksSUFBTSwyQ0FBMkM7QUFJOU0sSUFBSSxPQUFPLEtBQUssUUFBUSxjQUFjLHdDQUFlLENBQUM7QUFHdEQsSUFBTyxzQkFBUSxhQUFhO0FBQUEsRUFDeEIsU0FBUyxDQUFDLE1BQU0sQ0FBQztBQUFBO0FBQUE7QUFBQTtBQUFBLEVBSWpCLFNBQVM7QUFBQSxJQUNMLE9BQU8sRUFBRSxLQUFLLEtBQUssUUFBUSxNQUFNLEtBQUssRUFBRTtBQUFBLEVBQzVDO0FBQUEsRUFDQSxRQUFRO0FBQUEsSUFDSixNQUFNO0FBQUEsSUFDTixPQUFPO0FBQUEsTUFDSCxRQUFRO0FBQUEsSUFDWjtBQUFBLEVBQ0o7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQVFKLENBQUM7IiwKICAibmFtZXMiOiBbXQp9Cg==
