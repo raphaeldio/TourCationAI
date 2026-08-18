@@ -46,8 +46,48 @@ services:
         sync: false
       - key: SUPABASE_JWT_ALG
         value: RS256
+      # Pembatasan laju narasi AI pada dashboard. Hasilnya di-cache berdasarkan
+      # sidik jari angkanya, jadi membuka halaman berulang tidak memakan kuota.
+      - key: RATE_INSIGHT_PER_JAM
+        value: "6"
+      - key: RATE_GAP_PER_JAM
+        value: "6"
+      - key: RATE_ADVISOR_PER_JAM
+        value: "10"
+      - key: RATE_SIMULASI_PER_JAM
+        value: "12"
       # Daftar email pemberi peran awal; isi manual saat dibutuhkan.
       - key: ADMIN_EMAILS
         sync: false
+      # --- Peran GOV -----------------------------------------------------
+      # GOV_EMAILS: daftar alamat PERSIS yang berperan GOV. Inilah yang dipakai
+      # saat penjurian — domain uji coba sengaja tidak ada lagi (lihat bawah).
+      - key: GOV_EMAILS
+        sync: false
+      # Nama lama untuk hal yang sama; dipertahankan agar konfigurasi lama tidak
+      # putus. Boleh dikosongkan bila GOV_EMAILS sudah diisi.
       - key: GOV_DEMO_EMAILS
+        sync: false
+      # HANYA domain lembaga negara. JANGAN menambahkan domain uji coba: peran
+      # GOV aktif seketika tanpa persetujuan siapa pun, dan GOV berwenang
+      # memverifikasi usaha UMKM — domain yang bisa didaftarkan siapa saja
+      # menjadi rantai eskalasi. Untuk demo, pakai GOV_EMAILS di atas.
+      - key: GOV_EMAIL_DOMAINS
+        value: go.id
+      # --- Notifikasi verifikasi usaha (opsional) ------------------------
+      # Pemberitahuan SELALU tercatat di tabel `notifikasi_gov` dan selalu
+      # terbaca di dashboard. Variabel di bawah hanya menentukan apakah ia juga
+      # dikirim sebagai surel; tanpa itu statusnya menetap ANTRE dan itu bukan
+      # kerusakan. Format: "Kabupaten:alamat" dipisah koma.
+      - key: GOV_NOTIFIKASI_EMAILS
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: SMTP_DARI
         sync: false
