@@ -130,7 +130,3 @@ Ide, perumusan masalah, dan keputusan rancangan berasal dari tim: optimasi berba
 | Michael Aaron Hutagaol | UI/UX Designer |
 | Sinari Ilene Situmorang | Researcher dan QA |
 
-## Tautan pendukung
-
-- Video demonstrasi: [isi tautan atau hapus baris ini]
-- Pitch deck: [isi tautan atau hapus baris ini]
