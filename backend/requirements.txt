@@ -2,7 +2,7 @@ fastapi
 uvicorn[standard]
 pydantic
 pandas
-pulp
+pulp==3.3.2
 requests
 openai
 python-dotenv
